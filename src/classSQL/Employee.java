@@ -10,21 +10,26 @@ package classSQL;
  */
 public class Employee {
     int employeeID;
+    int roleID;
     String employeeName;
     String username;
     String password;
     String employeePhone;
-    String role;
     
     public Employee (Object[] newEmployee){
-       
-        this.employeeName = (String) newEmployee[0];
-        this.username = (String) newEmployee[1];
-        this.password = (String) newEmployee[2];
-        this.employeePhone = (String) newEmployee[3];
-        this.role = "Employee";
+        this.employeeID = (int) newEmployee[0];
+        this.employeeName = (String) newEmployee[1];
+        this.username = (String) newEmployee[2];
+        this.password = (String) newEmployee[3];
+        this.employeePhone = (String) newEmployee[4];
+        this.roleID = 2;
     }
-    
+    public Employee (int employeeID, String employeeName, int roleID, String employeePhone){
+        this.employeeID = employeeID;
+        this.employeeName = employeeName;
+        this.employeePhone = employeePhone;
+        this.roleID = roleID;
+    }
     public int getEmployeeID(){
         return employeeID;
     }
@@ -40,8 +45,8 @@ public class Employee {
     public String getEmployeePhone(){
         return employeePhone;
     }
-    public String getRole(){
-        return role;
+    public int getRole(){
+        return roleID;
     }
     
     

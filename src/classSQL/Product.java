@@ -15,11 +15,18 @@ public class Product {
     String productName;
     BigDecimal price;
     public Product(Object[] newProduct){
-        this.productName = (String) newProduct[0];
-        this.price = new BigDecimal((String) newProduct[1]);
+        this.productID = (int) newProduct[0];   
+        this.productName = (String) newProduct[1];
+        if (newProduct[2] instanceof Integer) {
+                int intValue = (int) newProduct[2];
+                this.price = BigDecimal.valueOf(intValue);
+            } else {
+                this.price = new BigDecimal((String) newProduct[2]);
+            }
     }
-   
-   
+    public int getProductID(){
+        return productID;
+    }
     public String getProductName(){
         return productName;
     }

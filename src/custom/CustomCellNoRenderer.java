@@ -13,10 +13,13 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
+import javax.swing.table.TableCellRenderer;
 
-public class CustomCellNoRenderer extends DefaultTableCellRenderer {
+public class CustomCellNoRenderer extends DefaultTableCellRenderer implements TableCellRenderer {
     private Border border = BorderFactory.createLineBorder(Color.BLACK); // Đường viền màu đen
-
+    public CustomCellNoRenderer() {
+        setHorizontalAlignment(SwingConstants.CENTER); // Đặt căn giữa cho tiêu đề
+    }
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);

@@ -48,4 +48,16 @@ public class KicksCornerDelete {
             Logger.getLogger(KicksCornerDelete.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+     public static void deleteInventory (int productID){
+       
+        try {
+            String sql = "Delete From ProductSize Where productID = ?";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setInt(1, productID);
+            psmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(KicksCornerDelete.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
