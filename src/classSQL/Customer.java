@@ -20,14 +20,18 @@ public class Customer {
         this.customerName = (String) newCustomer[1];
         this.customerPhone = (String) newCustomer[2];
 //        this.customerPoint = Integer.parseInt((String) newCustomer[3]);
-        if (newCustomer[3] != null) {
+        if (newCustomer[3] instanceof String) {
             this.customerPoint = Integer.parseInt((String) newCustomer[3]);
+        } else if (newCustomer[3] instanceof Integer) {
+            this.customerPoint = (int) newCustomer[3];
         } else {
-            // Xử lý khi newCustomer[3] là null, ví dụ gán giá trị mặc định
-            this.customerPoint = 0; // hoặc bất kỳ giá trị mặc định nào khác
+           
         }
     }
-
+    public Customer(String name, String phone){
+        this.customerName = name;
+        this.customerPhone = phone;
+    }
     public int getCustomerID() {
         return customerID;
     }

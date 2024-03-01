@@ -4,6 +4,8 @@
  */
 package backend;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,10 +49,23 @@ public class GetData {
         employeeInfo[1] = username.getText();
         employeeInfo[2] = phone.getText();
         employeeInfo[3] = password.getText();
-        
         return employeeInfo;
     }
+     public static Object[] getNewCustomer(JTextField name, JTextField phone) {
+        Object[] newCustomer = new Object[2];
+        newCustomer[0] = name.getText();
+        newCustomer[1] = phone.getText();
+        return newCustomer;
+    }
+    public static Object[] getInfoOrder(JTextField productId, JTextField sizeID, JTextField phone, JTextField point) {
+        Object[] employeeInfo = new Object[4];
+        employeeInfo[0] = productId.getText();
+        employeeInfo[1] = sizeID.getText();
+        employeeInfo[2] = phone.getText();
+        employeeInfo[3] = point.getText();
 
+        return employeeInfo;
+    }
     public static void getEmployee(DefaultTableModel employeeModel) {
         try {
             String sql = "Select employeeID, employeeName, roleID, employeePhone From Employee";
@@ -76,20 +91,23 @@ public class GetData {
 
     public static void getProduct(DefaultTableModel productModel) {
         try {
-            String sql = "Select * From Product";
+            String sql = "Select productID, productName, price From Product";
             PreparedStatement psmt = conn.prepareStatement(sql);
             ResultSet result = psmt.executeQuery();
 //            int columnCount = result.getMetaData().getColumnCount();
-            int columnCount = productModel.getColumnCount() - 1;
             int rowCount = 1;
             while (result.next()) {
-                Object[] rowData = new Object[columnCount + 1];
-                rowData[0] = rowCount;
-                for (int i = 1; i <= columnCount; i++) {
-                    rowData[i] = result.getObject(i);
-                }
-                productModel.addRow(rowData);
-                rowCount++;
+                 Object[] rowData = new Object[4];
+            rowData[0] = rowCount;
+            rowData[1] = result.getObject("productID");
+            rowData[2] = result.getObject("productName");
+            
+            BigDecimal price = result.getBigDecimal("price");
+            BigDecimal formattedPrice = price.setScale(2, RoundingMode.HALF_UP);
+            rowData[3] = formattedPrice;
+
+            productModel.addRow(rowData);
+            rowCount++;
             }
         } catch (SQLException ex) {
             Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,16 +147,18 @@ public class GetData {
             while (result.next()) {
                 Object[] rowData = new Object[columnCount + 1];
 
-                float price = result.getFloat("price");
+                BigDecimal price = result.getBigDecimal("price");
                 // Lấy discount từ cột discount
                 int discount = result.getInt("discount");
 
-                float discountedPrice = price - (price * discount / 100);
+//                BigDecimal discountedPrice = (BigDecimal) (price - (price * discount / 100));
+               BigDecimal discountedPrice = price.subtract(price.multiply(BigDecimal.valueOf(discount / 100.0)))
+                    .setScale(2, RoundingMode.HALF_UP);
 
                 rowData[1] = result.getObject("productID");
                 rowData[2] = result.getObject("productName");
                 rowData[3] = result.getObject("sizeID");
-                rowData[4] = discountedPrice; 
+                rowData[4] = discountedPrice;
                 rowData[5] = result.getObject("amount");
                 rowData[6] = result.getObject("discount");
                 inventoryModel.addRow(rowData);

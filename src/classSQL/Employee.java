@@ -17,11 +17,10 @@ public class Employee {
     String employeePhone;
     
     public Employee (Object[] newEmployee){
-        this.employeeID = (int) newEmployee[0];
-        this.employeeName = (String) newEmployee[1];
-        this.username = (String) newEmployee[2];
-        this.password = (String) newEmployee[3];
-        this.employeePhone = (String) newEmployee[4];
+        this.employeeName = (String) newEmployee[0];
+        this.username = (String) newEmployee[1];
+        this.password = (String) newEmployee[2];
+        this.employeePhone = (String) newEmployee[3];
         this.roleID = 2;
     }
     public Employee (int employeeID, String employeeName, int roleID, String employeePhone){
