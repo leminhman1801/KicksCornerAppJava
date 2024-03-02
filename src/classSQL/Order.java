@@ -61,10 +61,4 @@ public class Order {
     public int getSizeID(){
         return sizeID;
     }
-    public String getCustomerPhone(){
-        return customerPhone;
-    }
-    public int getPoint(){
-        return point;
-    }
 }

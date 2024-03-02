@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -28,7 +29,7 @@ import kickscorner.RegisterCustomer;
 public class KicksCornerShow {
 
     public static Connection conn = ConnectionDB.getConnection();
-
+    
     public static void showNewRowMembership(DefaultTableModel membershipModel) {
         try {
             String sql = "Select TOP 1 * From Customer ORDER BY customerID DESC";
@@ -172,22 +173,17 @@ public class KicksCornerShow {
 
     }
 
-    public static void showPoint(String phone, JTextField textfield) {
+    public static void showPoint(String phone, JLabel label) {
         try {
-            String sql = "Select customerPoint From Customer Where customerPhone = ?";
+            String sql = "Select customerName, customerPoint From Customer Where customerPhone = ?";
             PreparedStatement psmt = conn.prepareStatement(sql);
             psmt.setString(1, phone);
             ResultSet result = psmt.executeQuery();
 
-//            if (result.next()) {
-//
-//                int customerPoint = result.getInt("customerPoint");
-//
-//                textfield.setText(String.valueOf(customerPoint));
-//            }
             if (result.next()) {
                 int customerPoint = result.getInt("customerPoint");
-                textfield.setText(String.valueOf(customerPoint));
+                String customerName = result.getString("customerName");
+                label.setText(String.valueOf("Name: " + customerName + ", point: " + customerPoint));
             } else {
 //                int option = JOptionPane.showConfirmDialog(null, "This phone number is not registered. Do you want to sign up as a member?");
                 int option = JOptionPane.showConfirmDialog(null, "This phone number is not registered. Do you want to sign up as a member?", "Membership Confirmation", JOptionPane.YES_NO_OPTION);
@@ -204,4 +200,5 @@ public class KicksCornerShow {
         }
 
     }
+   
 }

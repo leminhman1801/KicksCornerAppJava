@@ -944,46 +944,46 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextFieldProductIDOrder" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldSizeIDOrder" min="-2" pref="92" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel11" min="-2" pref="68" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldPhoneOrder" min="-2" pref="154" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jTextFieldPointOrder" min="-2" pref="92" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane2" alignment="0" pref="650" max="32767" attributes="0"/>
+                                      <Component id="jPanel22" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jTextFieldProductIDOrder" max="32767" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jButtonAddProductOrder" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jTextFieldSizeIDOrder" min="-2" pref="92" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jButtonAddProductOrder" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="291" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="jLabelTotalOrderTable" min="-2" pref="196" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jPanel5" min="-2" pref="231" max="-2" attributes="0"/>
+                                      <Component id="jLabelNamePhone" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane2" alignment="0" pref="650" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel5" min="-2" pref="93" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel8" min="-2" pref="118" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="515" max="-2" attributes="0"/>
+                                  <Component id="jLabel31" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jPanel22" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel5" min="-2" pref="231" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -991,14 +991,16 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel8" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel8" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jLabel31" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabelNamePhone" alignment="0" pref="23" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1006,16 +1008,14 @@
                               <Component id="jPanel5" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextFieldPhoneOrder" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                                       <Component id="jTextFieldProductIDOrder" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                                       <Component id="jButtonAddProductOrder" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                                       <Component id="jTextFieldSizeIDOrder" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldPointOrder" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jScrollPane2" min="-2" pref="194" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelTotalOrderTable" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                   <Component id="jPanel22" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1026,30 +1026,6 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel10">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="14" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Point"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder bottom="0" left="4" right="0" top="0"/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldPhoneOrder">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="14" style="0"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldPhoneOrderFocusLost"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPhoneOrderActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JTextField" name="jTextFieldProductIDOrder">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1060,12 +1036,11 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldProductIDOrderActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel11">
+                <Component class="javax.swing.JLabel" name="jLabelNamePhone">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Phone"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                         <EmptyBorder bottom="0" left="4" right="0" top="0"/>
@@ -1122,7 +1097,7 @@
                         </Property>
                       </Properties>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="orderModel = new DefaultTableModel(&#xa;    null,&#xa;    new String [] {&#xa;        &quot;No.&quot;, &quot;Product ID&quot;, &quot;Product Name&quot;, &quot;Size&quot;, &quot;Quantity&quot;, &quot;Price&quot;,&quot;Discount&quot;, &quot;Amount&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class&#xa;    };&#xa;&#xa;    public void setValueAt(Object aValue, int row, int column) {&#xa;        super.setValueAt(aValue, row, column);&#xa;    }&#xa;    public Class&lt;?&gt; getColumnClass(int columnIndex) {&#xa;        if (columnIndex == 0) {&#xa;            return Integer.class; // C&#x1ed9;t s&#x1ed1; th&#x1ee9; t&#x1ef1; l&#xe0; ki&#x1ec3;u s&#x1ed1; nguy&#xea;n&#xa;        }&#xa;            return super.getColumnClass(columnIndex);&#xa;        }&#xa;&#xa;//     public boolean isCellEditable(int row, int column) {&#xa;//      return row == editableRowOrder &amp;&amp; column != 0;&#xa;//    }&#xa;    public boolean isCellEditable(int row, int column) {&#xa;        return row == editableRowOrder &amp;&amp; column == 4; // Ch&#x1ec9; cho c&#x1ed9;t Quantity c&#xf3; th&#x1ec3; ch&#x1ec9;nh s&#x1eed;a&#xa;}&#xa;   &#xa;};&#xa;    orderModel.addTableModelListener(new TableModelListener() {&#xa;    public void tableChanged(TableModelEvent e) {&#xa;        if (e.getType() == TableModelEvent.INSERT || e.getType() == TableModelEvent.DELETE) {&#xa;            for (int i = 0; i &lt; orderModel.getRowCount(); i++) {&#xa;                orderModel.setValueAt(i + 1, i, 0); // C&#x1ed9;t STT (index 0)&#xa;            }&#xa;        }&#xa;    }&#xa;});"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="orderModel = new DefaultTableModel(&#xa;    null,&#xa;    new String [] {&#xa;        &quot;No.&quot;, &quot;Product ID&quot;, &quot;Name&quot;, &quot;Size&quot;, &quot;Quantity&quot;, &quot;Price&quot;,&quot;Discount&quot;, &quot;Amount&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class&#xa;    };&#xa;&#xa;    public void setValueAt(Object aValue, int row, int column) {&#xa;        super.setValueAt(aValue, row, column);&#xa;    }&#xa;    public Class&lt;?&gt; getColumnClass(int columnIndex) {&#xa;        if (columnIndex == 0) {&#xa;            return Integer.class; // C&#x1ed9;t s&#x1ed1; th&#x1ee9; t&#x1ef1; l&#xe0; ki&#x1ec3;u s&#x1ed1; nguy&#xea;n&#xa;        }&#xa;            return super.getColumnClass(columnIndex);&#xa;        }&#xa;&#xa;    public boolean isCellEditable(int row, int column) {&#xa;        return row == editableRowOrder &amp;&amp; column == 4; // Ch&#x1ec9; cho c&#x1ed9;t Quantity c&#xf3; th&#x1ec3; ch&#x1ec9;nh s&#x1eed;a&#xa;}&#xa;   &#xa;};&#xa;    orderModel.addTableModelListener(new TableModelListener() {&#xa;    int quantity;&#xa;        double price;&#xa;        public void tableChanged(TableModelEvent e) {&#xa;        &#xa;        if (e.getType() == TableModelEvent.INSERT || e.getType() == TableModelEvent.DELETE) {&#xa;            for (int i = 0; i &lt; orderModel.getRowCount(); i++) {&#xa;                orderModel.setValueAt(i + 1, i, 0); // C&#x1ead;p nh&#x1ead;t l&#x1ea1;i s&#x1ed1; th&#x1ee9; t&#x1ef1;&#xa;            }&#xa;        } else if (e.getType() == TableModelEvent.UPDATE) { // Ki&#x1ec3;m tra s&#x1ef1; ki&#x1ec7;n l&#xe0; s&#x1eed;a &#x111;&#x1ed5;i d&#xf2;ng&#xa;            int row = e.getFirstRow();&#xa;            int column = e.getColumn();&#xa;            if (column == 4) { // Ki&#x1ec3;m tra c&#x1ed9;t s&#x1ed1; l&#x1b0;&#x1ee3;ng &#x111;&#xe3; thay &#x111;&#x1ed5;i&#xa;                // L&#x1ea5;y s&#x1ed1; l&#x1b0;&#x1ee3;ng m&#x1edb;i t&#x1eeb; b&#x1ea3;ng&#xa;            Object quantityObj = orderModel.getValueAt(row, 4);&#xa;            &#xa;            if (quantityObj instanceof String) {&#xa;                quantity = Integer.parseInt((String) quantityObj);&#xa;            } else {&#xa;   &#xa;            }&#xa;                // L&#x1ea5;y gi&#xe1; ti&#x1ec1;n t&#x1eeb; c&#x1ed9;t Price&#xa;            Object priceObj = orderModel.getValueAt(row, 5);&#xa;            &#xa;            if (priceObj instanceof Double) {&#xa;                price = (Double) priceObj;&#xa;            } else {&#xa;   &#xa;            }&#xa;                // T&#xed;nh to&#xe1;n l&#x1ea1;i amount&#xa;                double amount = quantity * price;&#xa;                // C&#x1ead;p nh&#x1ead;t gi&#xe1; tr&#x1ecb; m&#x1edb;i v&#xe0;o c&#x1ed9;t Amount trong b&#x1ea3;ng&#xa;                orderModel.setValueAt(amount, row, 7);&#xa;            }&#xa;        }&#xa;        &#xa;        // T&#xed;nh to&#xe1;n l&#x1ea1;i t&#x1ed5;ng s&#x1ed1; ti&#x1ec1;n sau khi thay &#x111;&#x1ed5;i&#xa;        Double totalAmount = 0.0;&#xa;        for (int row = 0; row &lt; orderModel.getRowCount(); row++) {&#xa;            Object amountObj = orderModel.getValueAt(row, 7); // L&#x1ea5;y gi&#xe1; tr&#x1ecb; &#x1edf; c&#x1ed9;t Amount&#xa;            if (amountObj instanceof Double) {&#xa;                Double amount = (Double) amountObj;&#xa;                totalAmount += amount; // Th&#x1ef1;c hi&#x1ec7;n ph&#xe9;p c&#x1ed9;ng v&#x1edb;i Double&#xa;            }&#xa;        }&#xa;        &#xa;        // C&#x1ead;p nh&#x1ead;t gi&#xe1; tr&#x1ecb; c&#x1ee7;a Label hi&#x1ec3;n th&#x1ecb; t&#x1ed5;ng s&#x1ed1; ti&#x1ec1;n&#xa;        jLabelTotalOrderTable.setText(&quot;Total: &quot; + String.valueOf(totalAmount));&#xa;        jLabelSubTotal.setText(String.valueOf(totalAmount));&#xa;        &#xa;    }&#xa;});"/>
                       </AuxValues>
                     </Component>
                   </SubComponents>
@@ -1154,78 +1129,83 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                              <Component id="jButton11" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jTextField6" linkSize="7" alignment="0" pref="218" max="32767" attributes="0"/>
+                                          <Component id="jLabelUsingPoint" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldUsingPoint" linkSize="7" alignment="0" pref="218" max="32767" attributes="0"/>
                                           <Component id="jLabel20" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabel21" linkSize="7" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabelSubTotal" linkSize="7" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel24" linkSize="6" min="-2" pref="216" max="-2" attributes="0"/>
+                                      <Component id="jLabelTotalInvoice" linkSize="6" min="-2" pref="216" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jLabel22" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabelTotalText" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabel13" min="-2" pref="217" max="-2" attributes="0"/>
+                                          <Component id="jLabelChange" min="-2" pref="217" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel15" max="32767" attributes="0"/>
-                                  <Component id="jTextField9" linkSize="6" min="-2" pref="206" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel15" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldCash" linkSize="6" pref="206" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jTextFieldPhoneOrder" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="jTextFieldPhoneOrder" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="jLabel20" linkSize="4" min="-2" pref="28" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel21" linkSize="2" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jLabelSubTotal" linkSize="2" min="-2" pref="26" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="jLabelUsingPoint" min="-2" pref="28" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField6" linkSize="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldUsingPoint" linkSize="2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel22" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jLabelTotalText" min="-2" pref="25" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel24" linkSize="2" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="jLabelTotalInvoice" linkSize="2" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel15" min="-2" pref="25" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="jTextField9" linkSize="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldCash" linkSize="2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel14" linkSize="4" min="-2" pref="25" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel13" linkSize="2" pref="26" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="jLabelChange" linkSize="2" pref="26" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton11" min="-2" pref="35" max="-2" attributes="0"/>
-                              <EmptySpace pref="66" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel13">
+                    <Component class="javax.swing.JLabel" name="jLabelChange">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="16" style="1"/>
@@ -1257,21 +1237,20 @@
                         <Property name="text" type="java.lang.String" value="Subtotal"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel7">
+                    <Component class="javax.swing.JLabel" name="jLabelUsingPoint">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="16" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Discount"/>
+                        <Property name="text" type="java.lang.String" value="Using point"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField6">
+                    <Component class="javax.swing.JTextField" name="jTextFieldUsingPoint">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="16" style="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="4"/>
-                        <Property name="text" type="java.lang.String" value="20"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                             <CompoundBorder>
@@ -1286,7 +1265,8 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField6ActionPerformed"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldUsingPointFocusLost"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldUsingPointActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel14">
@@ -1297,13 +1277,12 @@
                         <Property name="text" type="java.lang.String" value="Change"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel21">
+                    <Component class="javax.swing.JLabel" name="jLabelSubTotal">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="16" style="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="4"/>
-                        <Property name="text" type="java.lang.String" value="89"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                             <CompoundBorder>
@@ -1318,7 +1297,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel22">
+                    <Component class="javax.swing.JLabel" name="jLabelTotalText">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="16" style="1"/>
@@ -1326,13 +1305,12 @@
                         <Property name="text" type="java.lang.String" value="Total"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel24">
+                    <Component class="javax.swing.JLabel" name="jLabelTotalInvoice">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="16" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="4"/>
-                        <Property name="text" type="java.lang.String" value="69"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                             <CompoundBorder>
@@ -1369,13 +1347,12 @@
                         <Property name="text" type="java.lang.String" value="Cash"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField9">
+                    <Component class="javax.swing.JTextField" name="jTextFieldCash">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="16" style="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="4"/>
-                        <Property name="text" type="java.lang.String" value="70"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                             <CompoundBorder>
@@ -1390,18 +1367,30 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField9ActionPerformed"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldCashFocusLost"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldCashActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="jTextFieldPhoneOrder">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="SansSerif" size="14" style="0"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldPhoneOrderFocusLost"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPhoneOrderActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="jLabelTotalOrderTable">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="18" style="1"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="4"/>
-                    <Property name="text" type="java.lang.String" value="Total: 89"/>
+                    <Property name="text" type="java.lang.String" value="Total: 0"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                         <EmptyBorder bottom="1" left="1" right="5" top="1"/>
@@ -1484,15 +1473,13 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldPointOrder">
+                <Component class="javax.swing.JLabel" name="jLabel31">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="14" style="0"/>
+                      <Font name="SansSerif" size="16" style="0"/>
                     </Property>
+                    <Property name="text" type="java.lang.String" value="Phone"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPointOrderActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>

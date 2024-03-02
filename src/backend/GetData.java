@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class GetData {
 
     public static Connection conn = ConnectionDB.getConnection();
-
+    private static int customerPoint;
     public static void getMemberShip(DefaultTableModel membershipTable) {
         try {
             String sql = "Select * From Customer";
@@ -57,14 +57,11 @@ public class GetData {
         newCustomer[1] = phone.getText();
         return newCustomer;
     }
-    public static Object[] getInfoOrder(JTextField productId, JTextField sizeID, JTextField phone, JTextField point) {
-        Object[] employeeInfo = new Object[4];
-        employeeInfo[0] = productId.getText();
-        employeeInfo[1] = sizeID.getText();
-        employeeInfo[2] = phone.getText();
-        employeeInfo[3] = point.getText();
-
-        return employeeInfo;
+    public static Object[] getInfoOrder(JTextField productId, JTextField sizeID) {
+        Object[] infoOrder = new Object[4];
+        infoOrder[0] = productId.getText();
+        infoOrder[1] = sizeID.getText();
+        return infoOrder;
     }
     public static void getEmployee(DefaultTableModel employeeModel) {
         try {
@@ -166,6 +163,22 @@ public class GetData {
         } catch (SQLException ex) {
             Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+     public static int getPoint(String phone) {
+        
+        try {
+            String sql = "Select  customerPoint From Customer Where customerPhone = ?";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setString(1, phone);
+            ResultSet result = psmt.executeQuery();
+
+            if (result.next()) {
+                customerPoint = result.getInt("customerPoint");
+            } 
+        } catch (SQLException ex) {
+            Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return customerPoint;
     }
 
 }
