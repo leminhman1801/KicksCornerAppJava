@@ -84,11 +84,13 @@ public class KicksCornerInsert {
     }
 
     public static void insertOrder(Order newOrder) {
+      
         try {
             String sql = "Insert Into OrderTable (orderID, customerID, employeeID, orderDate) Values (?, ?, ?, ?)";
             PreparedStatement psmt = conn.prepareStatement(sql);
             psmt.setString(1, newOrder.getOrderID());
             psmt.setInt(2, newOrder.getCustomerID());
+           
             psmt.setInt(3, newOrder.getEmployeeID());
             LocalDateTime orderDate = newOrder.getOrderDate();
             Timestamp timestamp = Timestamp.valueOf(orderDate);

@@ -136,7 +136,7 @@ public class GetData {
     }
 
     public static Object[] getInvoiceInfo(JTextField productIDOrder, JTextField sizeIDOrder, JTextField phoneOrder, JTextField usingPointField, JTextField cashField, JLabel subTotalLabel, JLabel totalInvoiceLabel, JLabel changeLabel, JLabel employeeNameLabel) {
-        // Lấy giá trị từ các JTextField và chuyển đổi sang kiểu dữ liệu phù hợp
+        
         int productID = Integer.parseInt(productIDOrder.getText());
         int sizeID = Integer.parseInt(sizeIDOrder.getText());
         String phone = phoneOrder.getText();
@@ -144,7 +144,7 @@ public class GetData {
         int usingPoint = Integer.parseInt(usingPointField.getText());
         double cash = Double.parseDouble(cashField.getText());
 
-        // Lấy giá trị từ các JLabel và chuyển đổi sang kiểu dữ liệu phù hợp
+        
         double price = Double.parseDouble(subTotalLabel.getText());
         double totalInvoice = Double.parseDouble(totalInvoiceLabel.getText());
         double change = Double.parseDouble(changeLabel.getText());

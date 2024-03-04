@@ -73,7 +73,7 @@ public class KicksCorner extends javax.swing.JFrame {
     public static JTextField currentTextField;
     public static String currentTitle;
     private Employee employee;
-    public static int employeeID;
+   
  
     private static Consumer<Integer> deleteFunction;
 
@@ -129,10 +129,7 @@ public class KicksCorner extends javax.swing.JFrame {
      public Employee getEmployee() {
         return employee;
     }
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
-    }
-
+  
     public void setUsername(String username) {
         jLabelEmployeeName.setText(username);
 
@@ -285,7 +282,6 @@ public class KicksCorner extends javax.swing.JFrame {
         jButtonEditMembership = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jTextFieldSearchMembership = new javax.swing.JTextField();
         jPanelInventory = new javax.swing.JPanel();
@@ -293,7 +289,6 @@ public class KicksCorner extends javax.swing.JFrame {
         jTableInventory = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jTextFieldSearchInventory = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -307,7 +302,6 @@ public class KicksCorner extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
         jButton26 = new javax.swing.JButton();
-        jButton27 = new javax.swing.JButton();
         jButton28 = new javax.swing.JButton();
         jTextFieldSearchEmployee = new javax.swing.JTextField();
         jPanel25 = new javax.swing.JPanel();
@@ -323,7 +317,6 @@ public class KicksCorner extends javax.swing.JFrame {
         jTableProduct = new javax.swing.JTable();
         jPanel31 = new javax.swing.JPanel();
         jButtonExportExcelProduct = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
         jButtonPrintProduct = new javax.swing.JButton();
         jTextFieldSearchProduct = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -338,7 +331,6 @@ public class KicksCorner extends javax.swing.JFrame {
         jTableRole = new javax.swing.JTable();
         jPanel34 = new javax.swing.JPanel();
         jButton17 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
         jLabel29 = new javax.swing.JLabel();
         jPanel35 = new javax.swing.JPanel();
@@ -1636,14 +1628,6 @@ public class KicksCorner extends javax.swing.JFrame {
             }
         });
 
-        jButton15.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jButton15.setText("PDF");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
-            }
-        });
-
         jButton16.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jButton16.setText("Print");
         jButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -1672,25 +1656,25 @@ public class KicksCorner extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton14)
-                .addGap(12, 12, 12)
-                .addComponent(jButton15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
                 .addComponent(jTextFieldSearchMembership, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                        .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
-                    .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldSearchMembership))
-                .addGap(7, 7, 7))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSearchMembership))
+                        .addGap(7, 7, 7))))
         );
 
         javax.swing.GroupLayout jPanelMembershipLayout = new javax.swing.GroupLayout(jPanelMembership);
@@ -1788,14 +1772,6 @@ public class KicksCorner extends javax.swing.JFrame {
             }
         });
 
-        jButton10.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jButton10.setText("PDF");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-
         jButton3.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jButton3.setText("Print");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -1824,25 +1800,25 @@ public class KicksCorner extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton9)
-                .addGap(12, 12, 12)
-                .addComponent(jButton10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
                 .addComponent(jTextFieldSearchInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
-                    .addComponent(jTextFieldSearchInventory)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(7, 7, 7))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSearchInventory))
+                        .addGap(7, 7, 7))))
         );
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -1951,14 +1927,6 @@ public class KicksCorner extends javax.swing.JFrame {
             }
         });
 
-        jButton27.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jButton27.setText("PDF");
-        jButton27.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton27ActionPerformed(evt);
-            }
-        });
-
         jButton28.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jButton28.setText("Print");
         jButton28.addActionListener(new java.awt.event.ActionListener() {
@@ -1987,22 +1955,20 @@ public class KicksCorner extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton26)
-                .addGap(12, 12, 12)
-                .addComponent(jButton27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton28)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
                 .addComponent(jTextFieldSearchEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
+            .addGroup(jPanel27Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextFieldSearchEmployee))
                 .addGap(7, 7, 7))
         );
@@ -2238,14 +2204,6 @@ public class KicksCorner extends javax.swing.JFrame {
             }
         });
 
-        jButton13.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jButton13.setText("PDF");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-
         jButtonPrintProduct.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jButtonPrintProduct.setText("Print");
         jButtonPrintProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -2274,11 +2232,9 @@ public class KicksCorner extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel31Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonExportExcelProduct)
-                .addGap(12, 12, 12)
-                .addComponent(jButton13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonPrintProduct)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
                 .addComponent(jTextFieldSearchProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -2288,9 +2244,9 @@ public class KicksCorner extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextFieldSearchProduct)
-                    .addComponent(jButtonPrintProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonExportExcelProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonExportExcelProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonPrintProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(7, 7, 7))
         );
 
@@ -2379,7 +2335,7 @@ public class KicksCorner extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelProductLayout = new javax.swing.GroupLayout(jPanelProduct);
@@ -2461,14 +2417,6 @@ public class KicksCorner extends javax.swing.JFrame {
             }
         });
 
-        jButton20.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jButton20.setText("PDF");
-        jButton20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton20ActionPerformed(evt);
-            }
-        });
-
         jButton21.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jButton21.setText("Print");
         jButton21.addActionListener(new java.awt.event.ActionListener() {
@@ -2484,26 +2432,25 @@ public class KicksCorner extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton17)
-                .addGap(12, 12, 12)
-                .addComponent(jButton20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton21)
-                .addGap(528, 528, 528))
+                .addGap(703, 703, 703))
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(jButton20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jLabel29.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel29.setText("Inventory");
+        jLabel29.setText("Role");
 
         jPanel35.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2599,7 +2546,7 @@ public class KicksCorner extends javax.swing.JFrame {
         );
         jPanelRoleLayout.setVerticalGroup(
             jPanelRoleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 803, Short.MAX_VALUE)
+            .addGap(0, 804, Short.MAX_VALUE)
             .addGroup(jPanelRoleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelRoleLayout.createSequentialGroup()
                     .addComponent(jPanelRoleBlock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2688,10 +2635,6 @@ public class KicksCorner extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -2699,10 +2642,6 @@ public class KicksCorner extends javax.swing.JFrame {
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
@@ -2751,10 +2690,6 @@ public class KicksCorner extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton26ActionPerformed
 
-    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton27ActionPerformed
-
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton28ActionPerformed
@@ -2788,10 +2723,6 @@ public class KicksCorner extends javax.swing.JFrame {
         ExportToExcel.clickExport(kicksCorner, jTableProduct);
 
     }//GEN-LAST:event_jButtonExportExcelProductActionPerformed
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButtonPrintProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintProductActionPerformed
         PDFGenerator.generatePDF(jTableProduct, currentTitle);
@@ -2828,10 +2759,6 @@ public class KicksCorner extends javax.swing.JFrame {
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton17ActionPerformed
-
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         // TODO add your handling code here:
@@ -2877,7 +2804,25 @@ public class KicksCorner extends javax.swing.JFrame {
         }
         if (dialogResult == JOptionPane.YES_OPTION) {
             int customerID = GetData.getCustomerID(jTextFieldPhoneOrder);
-            System.out.println("Phone: " + customerID);
+            int employeeID = employee.getEmployeeID();
+            if(customerID == 1){
+                System.out.println("Equal");
+            } else{
+                                System.out.println("NOT Equal");
+
+            }
+            System.out.println(jTextFieldProductIDOrder.getText());
+            System.out.println(jTextFieldSizeIDOrder.getText());
+            System.out.println(jTextFieldPhoneOrder.getText());
+            System.out.println(jTextFieldUsingPoint.getText());
+            System.out.println(jTextFieldCash.getText());
+            System.out.println(jLabelSubTotal.getText());
+            System.out.println(jLabelTotalInvoice.getText());
+            System.out.println(jLabelChange.getText());
+            System.out.println(jLabelEmployeeName.getText());
+          
+            
+            System.out.println("CustomerID: " + customerID);
             Object[] invoiceInfo = GetData.getInvoiceInfo(jTextFieldProductIDOrder, jTextFieldSizeIDOrder, jTextFieldPhoneOrder, jTextFieldUsingPoint, jTextFieldCash, jLabelSubTotal, jLabelTotalInvoice, jLabelChange, jLabelEmployeeName);
             LocalDateTime time = LocalDateTime.now();
             String employeeName = employee.getEmployeeName();
@@ -2889,7 +2834,7 @@ public class KicksCorner extends javax.swing.JFrame {
                 isUsed = GetData.isOrderIDUsed(orderID);
             }
 
-            Order order = new Order(orderID, employeeID, customerID , time);
+            Order order = new Order(orderID, customerID, employeeID, time);
             KicksCornerInsert.insertOrder(order);
 
             String customerName = GetData.getCustomerName(jTextFieldPhoneOrder);
@@ -3195,16 +3140,11 @@ public class KicksCorner extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
