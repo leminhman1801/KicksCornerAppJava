@@ -62,47 +62,7 @@ public class ListenTableChanged {
         });
     }
 
-//    public static void addProduct(JTable table) {
-//        final int[] nonEmptyCount = {0};
-//        table.getModel().addTableModelListener((TableModelEvent e) -> {
-//            int row = e.getFirstRow();
-//            int column = e.getColumn();
-//            if (e.getType() == TableModelEvent.UPDATE && row >= 0 && column >= 0) {
-//
-//                Object cellValue = table.getValueAt(row, column);
-//                if (column == 3) { // Kiểm tra cột giá sản phẩm (đếm từ 0)
-//                if (cellValue != null) {
-//                    String price = cellValue.toString();
-//                    // Kiểm tra giá trị nhập vào bằng regex
-//                    if (!price.matches("^\\d*\\.?\\d{0,2}$")) {
-//                        // Nếu giá trị không hợp lệ, thông báo lỗi và đặt lại giá trị là null
-//                        JOptionPane.showMessageDialog(null, "Price must be a valid number with up to 2 decimal places.");
-//                        table.setValueAt(null, row, column);
-//                    }
-//                }
-//            }
-//                System.out.println("Updated");
-//                if (cellValue != null && !cellValue.toString().trim().isEmpty()) {
-//                    nonEmptyCount[0]++;
-//                } else {
-//                    nonEmptyCount[0]--;
-//                }
-//
-//                if (nonEmptyCount[0] == table.getColumnCount() - 2) {
-//                    int newRowIndex = table.getRowCount() - 1;
-//                    Object[] newRowValue = new Object[table.getColumnCount() - 1];
-//
-//                    for (int currentCol = 1; currentCol < table.getColumnCount(); currentCol++) {
-//                        newRowValue[currentCol - 1] = table.getValueAt(newRowIndex, currentCol);
-//
-//                    }
-//                    System.out.println("" + newRowValue[0] + newRowValue[1]);
-//                    Product newProduct = new Product(newRowValue);
-//                    KicksCornerUpdate.updateProduct(newProduct);
-//                }
-//            }
-//        });
-//    }
+
     public static void addProduct(JTable table) {
         final int[] nonEmptyCount = {0};
         table.getModel().addTableModelListener((TableModelEvent e) -> {

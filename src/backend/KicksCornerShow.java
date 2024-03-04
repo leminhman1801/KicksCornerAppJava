@@ -6,6 +6,7 @@ package backend;
 
 import static backend.GetData.conn;
 import classSQL.Order;
+import classSQL.OrderTable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Connection;
@@ -88,7 +89,7 @@ public class KicksCornerShow {
         }
     }
 
-    public static void showNewRowOrder(DefaultTableModel orderModel, Order newOrder) {
+    public static void showNewRowOrder(DefaultTableModel orderModel, OrderTable newOrder) {
         try {
             String sql = """
                      SELECT p.productID, p.productName, s.sizeName, p.price, ps.discount
@@ -200,5 +201,7 @@ public class KicksCornerShow {
         }
 
     }
+    
+    
    
 }

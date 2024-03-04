@@ -4,61 +4,54 @@
  */
 package classSQL;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Asus
  */
 public class Order {
-
-    int productID;
-    int sizeID;
-    String customerPhone;
-    int point;
-
-    public Order(Object[] newOrder) {
-        if (newOrder[0] instanceof Integer) {
-            this.productID = (int) newOrder[0];
-        } else if (newOrder[0] instanceof String) {
-            try {
-                this.productID = Integer.parseInt((String) newOrder[0]);
-            } catch (NumberFormatException e) {
-             
-                this.productID = 0; 
-            }
-        } else {
-            
-            this.productID = 0; 
-        }
-        if (newOrder[1] instanceof Integer) {
-            this.sizeID = (int) newOrder[1];
-        } else if (newOrder[1] instanceof String) {
-            try {
-                this.sizeID = Integer.parseInt((String) newOrder[1]);
-            } catch (NumberFormatException e) {
-                
-                this.sizeID = 0; 
-            }
-        } else {
-            
-            this.sizeID = 0; 
-        }
-        this.customerPhone = (String) newOrder[2];
-        if (newOrder[3] instanceof String) {
-            try {
-                this.point = Integer.parseInt((String) newOrder[3]);
-            } catch (NumberFormatException e) {
-              
-                this.point = 0; 
-            }
-        } else {
-           
-            this.point = 0; 
-        }
+    String orderID;
+    int customerID;
+    int employeeID;
+    LocalDateTime orderDate;
+    
+ 
+  
+    public Order( String orderID, int customerID, int employeeID, LocalDateTime time ){
+        this.orderID = orderID;
+        this.customerID = customerID;
+        this.employeeID = employeeID;
+        this.orderDate = time;
     }
-    public int getProductID(){
-        return productID;
+   
+    
+    public String getOrderID() {
+        return orderID;
     }
-    public int getSizeID(){
-        return sizeID;
+
+
+    public int getCustomerID() {
+        return customerID;
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
+
+    public int getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
+    }
+
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
     }
 }

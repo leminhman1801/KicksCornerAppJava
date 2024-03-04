@@ -15,7 +15,13 @@ public class Employee {
     String username;
     String password;
     String employeePhone;
-    
+    public Employee(int employeeID, int roleID, String employeeName, String employeePhone, String username) {
+        this.employeeID = employeeID;
+        this.roleID = roleID;
+        this.employeeName = employeeName;
+        this.employeePhone = employeePhone;
+        this.username = username;
+    }
     public Employee (Object[] newEmployee){
         this.employeeName = (String) newEmployee[0];
         this.username = (String) newEmployee[1];

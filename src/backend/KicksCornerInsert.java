@@ -3,20 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package backend;
+
 import classSQL.Customer;
 import classSQL.Employee;
 import classSQL.Inventory;
+import classSQL.Order;
+import classSQL.OrderDetail;
 import classSQL.Product;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author Asus
  */
 public class KicksCornerInsert {
+
     public static Connection conn = ConnectionDB.getConnection();
-    public static void insertMembership(Customer newCustomer){   
+
+    public static void insertMembership(Customer newCustomer) {
         try {
             String sql = "Insert Into Customer (customerName, customerPhone, customerPoint) Values ( ?, ?, ?)";
             PreparedStatement psmt = conn.prepareStatement(sql);
@@ -26,10 +33,11 @@ public class KicksCornerInsert {
             psmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex);
-        }    
+        }
     }
-    public static void insertEmployee(Employee newEmployee){
-        
+
+    public static void insertEmployee(Employee newEmployee) {
+
         try {
             String sql = "Insert Into Employee (roleID, employeeName, employeePhone, username, password) Values (2, ?, ?, ?, ?)";
             PreparedStatement psmt = conn.prepareStatement(sql);
@@ -42,23 +50,25 @@ public class KicksCornerInsert {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        
+
     }
-    public static void insertProduct(Product newProduct){
-        
+
+    public static void insertProduct(Product newProduct) {
+
         try {
             String sql = "Insert Into Product (productName, price) Values (?, ?)";
             PreparedStatement psmt = conn.prepareStatement(sql);
             psmt.setString(1, newProduct.getProductName());
             psmt.setBigDecimal(2, newProduct.getPrice());
-          
+
             psmt.executeUpdate();
             System.out.println("Inserted");
         } catch (SQLException ex) {
             System.out.println(ex);
         }
     }
-     public static void insertInventory(Inventory newProductSize){   
+
+    public static void insertInventory(Inventory newProductSize) {
         try {
             String sql = "Insert Into ProductSize (productID, sizeID, amount, discount) Values ( ?, ?, ?, ?)";
             PreparedStatement psmt = conn.prepareStatement(sql);
@@ -70,6 +80,38 @@ public class KicksCornerInsert {
             System.out.println("Inserted");
         } catch (SQLException ex) {
             System.out.println(ex);
-        }    
+        }
+    }
+
+    public static void insertOrder(Order newOrder) {
+        try {
+            String sql = "Insert Into OrderTable (orderID, customerID, employeeID, orderDate) Values (?, ?, ?, ?)";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setString(1, newOrder.getOrderID());
+            psmt.setInt(2, newOrder.getCustomerID());
+            psmt.setInt(3, newOrder.getEmployeeID());
+            LocalDateTime orderDate = newOrder.getOrderDate();
+            Timestamp timestamp = Timestamp.valueOf(orderDate);
+            psmt.setTimestamp(4, timestamp);
+            psmt.executeUpdate();
+            System.out.println("Inserted");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+    public static void insertOrderDetail(OrderDetail newOrderDetail) {
+        try {
+            String sql = "Insert Into OrderDetail (orderID, productID, sizeID, price, quantity) Values (?, ?, ?, ?, ?)";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setString(1, newOrderDetail.getOrderID());
+            psmt.setInt(2, newOrderDetail.getProductID());
+            psmt.setInt(3, newOrderDetail.getSizeID());
+            psmt.setDouble(4, newOrderDetail.getPrice());
+            psmt.setInt(5, newOrderDetail.getQuantity());
+            psmt.executeUpdate();
+            System.out.println("Inserted");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
 }

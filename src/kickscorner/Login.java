@@ -4,15 +4,25 @@
  */
 package kickscorner;
 
+import backend.GetData;
+import classSQL.Employee;
+import java.awt.event.KeyEvent;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Asus
  */
 public class Login extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Login
      */
+    public static String username;
+    public static Employee employee;
+    private static JLabel jLabelUsername;
+    public static int employeeID;
     public Login() {
         initComponents();
     }
@@ -31,9 +41,9 @@ public class Login extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldUsername = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldPassword = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButtonLogin = new javax.swing.JButton();
 
@@ -51,9 +61,9 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
         jLabel1.setText("Sign In");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldUsernameActionPerformed(evt);
             }
         });
 
@@ -61,9 +71,9 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("User Name");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldPasswordActionPerformed(evt);
             }
         });
 
@@ -89,10 +99,10 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
+                    .addComponent(jTextFieldUsername)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
+                    .addComponent(jTextFieldPassword)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -105,11 +115,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addComponent(jButtonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(102, Short.MAX_VALUE))
@@ -130,17 +140,39 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldUsernameActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void jTextFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPasswordActionPerformed
+       
+            jButtonLogin.doClick(); 
+      
+    }//GEN-LAST:event_jTextFieldPasswordActionPerformed
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        KicksCorner kicksCorner = new KicksCorner();
-        kicksCorner.setVisible(true);
+        username = jTextFieldUsername.getText().toLowerCase();
+        String password = jTextFieldPassword.getText();
+        if (GetData.isValidUser(username, password)) {
+            Employee employeeInfo = GetData.getUser(username, password);
+//            int empID = employeeInfo.getEmployeeID();
+//            int roleID = employeeInfo.getRole();
+//            String employeeName = employeeInfo.getEmployeeName();
+//            String employeePhone = employeeInfo.getEmployeePhone();
+//            String usernameEmp = employeeInfo.getUsername();
+//            employee = new Employee(empID, roleID, employeeName, employeePhone, usernameEmp);
+//            System.out.println("Employee: " + employee);
+            KicksCorner kicksCorner = new KicksCorner();
+           
+            kicksCorner.setEmployee(employeeInfo);
+            kicksCorner.setUsername(employeeInfo.getUsername());
+            kicksCorner.activeFeatureByRole(employeeInfo.getRole());
+            kicksCorner.setVisible(true);
+
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Incorrect username or password!", "Login failed", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     /**
@@ -170,7 +202,7 @@ public class Login extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -187,8 +219,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextFieldPassword;
+    private javax.swing.JTextField jTextFieldUsername;
     private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
