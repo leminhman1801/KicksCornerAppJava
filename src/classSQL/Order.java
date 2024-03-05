@@ -11,25 +11,22 @@ import java.time.LocalDateTime;
  * @author Asus
  */
 public class Order {
+
     String orderID;
     int customerID;
     int employeeID;
     LocalDateTime orderDate;
-    
- 
-  
-    public Order( String orderID, int customerID, int employeeID, LocalDateTime time ){
+
+    public Order(String orderID, int customerID, int employeeID, LocalDateTime time) {
         this.orderID = orderID;
         this.customerID = customerID;
         this.employeeID = employeeID;
         this.orderDate = time;
     }
-   
-    
+
     public String getOrderID() {
         return orderID;
     }
-
 
     public int getCustomerID() {
         return customerID;

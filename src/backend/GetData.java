@@ -66,6 +66,7 @@ public class GetData {
         }
         return customerID;
     }
+
     public static String getCustomerName(JTextField phone) {
         String customerName = null;
         try {
@@ -82,6 +83,7 @@ public class GetData {
         }
         return customerName;
     }
+
     public static Object[] getEmployeeSignUp(JTextField name, JTextField username, JTextField password, JTextField phone) {
         Object[] employeeInfo = new Object[4];
         employeeInfo[0] = name.getText();
@@ -136,7 +138,7 @@ public class GetData {
     }
 
     public static Object[] getInvoiceInfo(JTextField productIDOrder, JTextField sizeIDOrder, JTextField phoneOrder, JTextField usingPointField, JTextField cashField, JLabel subTotalLabel, JLabel totalInvoiceLabel, JLabel changeLabel, JLabel employeeNameLabel) {
-        
+
         int productID = Integer.parseInt(productIDOrder.getText());
         int sizeID = Integer.parseInt(sizeIDOrder.getText());
         String phone = phoneOrder.getText();
@@ -144,7 +146,6 @@ public class GetData {
         int usingPoint = Integer.parseInt(usingPointField.getText());
         double cash = Double.parseDouble(cashField.getText());
 
-        
         double price = Double.parseDouble(subTotalLabel.getText());
         double totalInvoice = Double.parseDouble(totalInvoiceLabel.getText());
         double change = Double.parseDouble(changeLabel.getText());
@@ -179,7 +180,7 @@ public class GetData {
     }
 
     public static int getSizeID(Float sizeName) {
-       int sizeID = -1;
+        int sizeID = -1;
         try {
             String sql = "Select sizeID From Size Where sizeName = ? ";
             PreparedStatement psmt = conn.prepareStatement(sql);
@@ -196,7 +197,6 @@ public class GetData {
         }
         return sizeID;
     }
-   
 
     public static void getProduct(DefaultTableModel productModel) {
         try {
@@ -211,8 +211,8 @@ public class GetData {
                 rowData[1] = result.getObject("productID");
                 rowData[2] = result.getObject("productName");
 
-                BigDecimal price = result.getBigDecimal("price");
-                BigDecimal formattedPrice = price.setScale(2, RoundingMode.HALF_UP);
+                double price = result.getDouble("price");
+               String formattedPrice = String.format("%.2f", price);
                 rowData[3] = formattedPrice;
 
                 productModel.addRow(rowData);
@@ -256,13 +256,13 @@ public class GetData {
             while (result.next()) {
                 Object[] rowData = new Object[columnCount + 1];
 
-                BigDecimal price = result.getBigDecimal("price");
+                double price = result.getDouble("price");
                 // Lấy discount từ cột discount
                 int discount = result.getInt("discount");
 
-//                BigDecimal discountedPrice = (BigDecimal) (price - (price * discount / 100));
-                BigDecimal discountedPrice = price.subtract(price.multiply(BigDecimal.valueOf(discount / 100.0)))
-                        .setScale(2, RoundingMode.HALF_UP);
+//            
+                double discountedPrice = price - (price * (discount / 100.0));
+                discountedPrice = Math.round(discountedPrice * 100.0) / 100.0;
 
                 rowData[1] = result.getObject("productID");
                 rowData[2] = result.getObject("productName");
@@ -336,17 +336,18 @@ public class GetData {
 
         return isValid;
     }
+
     public static boolean isOrderIDUsed(String orderID) {
-    boolean isUsed = false;
-    try {
-        String sql = "SELECT orderID FROM OrderTable WHERE orderID = ?";
-        PreparedStatement psmt = conn.prepareStatement(sql);
-        psmt.setString(1, orderID);
-        ResultSet result = psmt.executeQuery();
-        isUsed = result.next(); 
-    } catch (SQLException ex) {
-        Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
+        boolean isUsed = false;
+        try {
+            String sql = "SELECT orderID FROM OrderTable WHERE orderID = ?";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setString(1, orderID);
+            ResultSet result = psmt.executeQuery();
+            isUsed = result.next();
+        } catch (SQLException ex) {
+            Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return isUsed;
     }
-    return isUsed;
-}
 }

@@ -6,9 +6,10 @@ package kickscorner;
 
 import backend.GetData;
 import backend.KicksCornerInsert;
-import backend.KicksCornerShow;
+
 import classSQL.Customer;
 import classSQL.Employee;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import static kickscorner.KicksCorner.employeeModel;
@@ -23,11 +24,9 @@ public class RegisterCustomer extends javax.swing.JFrame {
      * Creates new form Login
      */
     public RegisterCustomer() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icons/KicksCornerIcon.png")));
         initComponents();
-        jTextFieldNameNewCustomer.setFocusable(false);
-        jTextFieldPhoneNewCustomer.setFocusable(false);
-//        jTextFieldPassword.setFocusable(false);
-//        jTextFieldPhone .setFocusable(false);
+
         RegisterCustomer.this.setDefaultCloseOperation(RegisterCustomer.DISPOSE_ON_CLOSE);
     }
 
@@ -174,7 +173,7 @@ public class RegisterCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNameNewCustomerActionPerformed
 
     private void jTextFieldPhoneNewCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPhoneNewCustomerActionPerformed
-        // TODO add your handling code here:
+        jButtonRegisterCustomer.doClick();
     }//GEN-LAST:event_jTextFieldPhoneNewCustomerActionPerformed
 
     private void jButtonRegisterCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterCustomerActionPerformed
@@ -187,8 +186,7 @@ public class RegisterCustomer extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Register success");
 
         RegisterCustomer.this.dispose();
-//        KicksCornerShow.showNewRowEmployee(employeeModel);
-//        RegisterCustomer.this.dispose();
+
     }//GEN-LAST:event_jButtonRegisterCustomerActionPerformed
 
     private void jTextFieldNameNewCustomerFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNameNewCustomerFocusGained

@@ -43,7 +43,7 @@ public class KicksCornerUpdate {
             String sql = "Update Product Set productName = ?, price = ? Where productID = ?";
             PreparedStatement psmt = conn.prepareStatement(sql);
             psmt.setString(1, editedProduct.getProductName());
-            psmt.setBigDecimal(2, editedProduct.getPrice());
+            psmt.setDouble(2, editedProduct.getPrice());
             psmt.setInt(3, editedProduct.getProductID());
             psmt.executeUpdate();
             System.out.println("Updated");

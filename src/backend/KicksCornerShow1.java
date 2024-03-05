@@ -27,7 +27,7 @@ import kickscorner.RegisterCustomer;
  *
  * @author Asus
  */
-public class KicksCornerShow {
+public class KicksCornerShow1 {
 
     public static Connection conn = ConnectionDB.getConnection();
     

@@ -11,7 +11,6 @@ import classSQL.Product;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.math.BigDecimal;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
@@ -70,22 +69,23 @@ public class ListenTableChanged {
             int column = e.getColumn();
             if (e.getType() == TableModelEvent.UPDATE && row >= 0 && column >= 0) {
 
-                if (column == 3) {
-                    Object cellValue = table.getValueAt(row, column);
-                    if (cellValue != null) {
-                        BigDecimal price;
-                        try {
-                            price = new BigDecimal(cellValue.toString()).setScale(2);
-                        } catch (NumberFormatException ex) {
-                            JOptionPane.showMessageDialog(null, "Invalid price format. Please enter a valid number.");
-                            // Đặt giá trị mặc định cho ô đó hoặc xử lý lỗi theo ý muốn của bạn
-                            table.setValueAt(null, row, column);
-                            return;
-                        }
-                        // Đặt lại giá trị đã định dạng vào ô đó
-                        table.setValueAt(price, row, column);
-                    }
-                }
+//                if (column == 3) {
+//                    Object cellValue = table.getValueAt(row, column);
+//                    if (cellValue != null) {
+//                        double price;
+//                        try {
+//                            price = Double.parseDouble(cellValue.toString());
+//                                 price = Math.round(price * 100.0) / 100.0;
+//                        } catch (NumberFormatException ex) {
+//                            JOptionPane.showMessageDialog(null, "Invalid price format. Please enter a valid number.");
+//                            // Đặt giá trị mặc định cho ô đó hoặc xử lý lỗi theo ý muốn của bạn
+//                            table.setValueAt(null, row, column);
+//                            return;
+//                        }
+//                        // Đặt lại giá trị đã định dạng vào ô đó
+//                        table.setValueAt(price, row, column);
+//                    }
+//                }
                 System.out.println("Updated");
                 if (table.getValueAt(row, column) != null && !table.getValueAt(row, column).toString().trim().isEmpty()) {
                     nonEmptyCount[0]++;
@@ -263,7 +263,7 @@ public class ListenTableChanged {
                     System.out.println("la sao");
                     // Đặt biến cờ thành true trước khi gọi showNewPrice
                     KicksCorner.setDiscountChangedtTrue();
-                    KicksCornerShow.showNewPrice(table, inventoryModel, row, productID, sizeID);
+                    KicksCornerShow1.showNewPrice(table, inventoryModel, row, productID, sizeID);
 
                     KicksCorner.setDiscountChangedtFalse();
                 }

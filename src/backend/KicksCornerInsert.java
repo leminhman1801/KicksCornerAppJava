@@ -59,7 +59,7 @@ public class KicksCornerInsert {
             String sql = "Insert Into Product (productName, price) Values (?, ?)";
             PreparedStatement psmt = conn.prepareStatement(sql);
             psmt.setString(1, newProduct.getProductName());
-            psmt.setBigDecimal(2, newProduct.getPrice());
+            psmt.setDouble(2, newProduct.getPrice());
 
             psmt.executeUpdate();
             System.out.println("Inserted");
@@ -84,13 +84,13 @@ public class KicksCornerInsert {
     }
 
     public static void insertOrder(Order newOrder) {
-      
+
         try {
             String sql = "Insert Into OrderTable (orderID, customerID, employeeID, orderDate) Values (?, ?, ?, ?)";
             PreparedStatement psmt = conn.prepareStatement(sql);
             psmt.setString(1, newOrder.getOrderID());
             psmt.setInt(2, newOrder.getCustomerID());
-           
+
             psmt.setInt(3, newOrder.getEmployeeID());
             LocalDateTime orderDate = newOrder.getOrderDate();
             Timestamp timestamp = Timestamp.valueOf(orderDate);
@@ -101,6 +101,7 @@ public class KicksCornerInsert {
             System.out.println(ex);
         }
     }
+
     public static void insertOrderDetail(OrderDetail newOrderDetail) {
         try {
             String sql = "Insert Into OrderDetail (orderID, productID, sizeID, price, quantity) Values (?, ?, ?, ?, ?)";

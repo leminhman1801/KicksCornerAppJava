@@ -6,6 +6,7 @@ package kickscorner;
 
 import backend.GetData;
 import classSQL.Employee;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,11 +20,12 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public static String username;
+    
     public static Employee employee;
     private static JLabel jLabelUsername;
     public static int employeeID;
     public Login() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icons/KicksCornerIcon.png")));
         initComponents();
     }
 
@@ -43,7 +45,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldUsername = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldPassword = new javax.swing.JTextField();
+        jTextFieldPassword = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jButtonLogin = new javax.swing.JButton();
 
@@ -59,7 +61,10 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sign In");
+        jLabel1.setToolTipText("");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jTextFieldUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,11 +105,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextFieldUsername)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextFieldPassword)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
+                    .addComponent(jButtonLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -151,24 +156,15 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPasswordActionPerformed
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        username = jTextFieldUsername.getText().toLowerCase();
+        String username = jTextFieldUsername.getText().toLowerCase();
         String password = jTextFieldPassword.getText();
         if (GetData.isValidUser(username, password)) {
             Employee employeeInfo = GetData.getUser(username, password);
-//            int empID = employeeInfo.getEmployeeID();
-//            int roleID = employeeInfo.getRole();
-//            String employeeName = employeeInfo.getEmployeeName();
-//            String employeePhone = employeeInfo.getEmployeePhone();
-//            String usernameEmp = employeeInfo.getUsername();
-//            employee = new Employee(empID, roleID, employeeName, employeePhone, usernameEmp);
-//            System.out.println("Employee: " + employee);
             KicksCorner kicksCorner = new KicksCorner();
-           
             kicksCorner.setEmployee(employeeInfo);
-            kicksCorner.setUsername(employeeInfo.getUsername());
+            kicksCorner.setUsername(employeeInfo.getEmployeeName());
             kicksCorner.activeFeatureByRole(employeeInfo.getRole());
             kicksCorner.setVisible(true);
-
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Incorrect username or password!", "Login failed", JOptionPane.ERROR_MESSAGE);

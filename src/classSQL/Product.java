@@ -18,7 +18,7 @@ public class Product {
 
     int productID;
     String productName;
-    BigDecimal price;
+    double price;
 
     public Product(Object[] newProduct, JTable table, int row, int column) {
         this.productID = (int) newProduct[0];
@@ -27,13 +27,13 @@ public class Product {
         try {
             if (newProduct[2] instanceof Integer) {
                 int intValue = (int) newProduct[2];
-                this.price = BigDecimal.valueOf(intValue).setScale(2, RoundingMode.HALF_UP);
+                this.price = (double) intValue;
                 
             } else {
-                this.price = new BigDecimal((String) newProduct[2]).setScale(2, RoundingMode.HALF_UP);
+                 this.price = Double.parseDouble((String) newProduct[2]);
             }
-
-            if (this.price.compareTo(BigDecimal.ZERO) <= 0) {
+             this.price = Math.round(this.price * 100.0) / 100.0;
+            if (this.price <= 0) {
                 JOptionPane.showMessageDialog(null, "Price must be greater than 0. Please enter a valid price.");
                 table.setValueAt(null, row, column);
             }
@@ -52,7 +52,7 @@ public class Product {
         return productName;
     }
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 }

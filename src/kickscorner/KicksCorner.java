@@ -8,9 +8,9 @@ import backend.GetData;
 import backend.KicksCornerCreate;
 import backend.KicksCornerDelete;
 import backend.KicksCornerInsert;
-import backend.KicksCornerShow;
+import backend.KicksCornerShow1;
 import backend.ListenTableChanged;
-import backend.KicksCornerView;
+
 import backend.ProductIDListener;
 import classSQL.Employee;
 import classSQL.Inventory;
@@ -73,10 +73,9 @@ public class KicksCorner extends javax.swing.JFrame {
     public static JTextField currentTextField;
     public static String currentTitle;
     private Employee employee;
-   
- 
+    
     private static Consumer<Integer> deleteFunction;
-
+    
     private static Object selectedID;
     CardLayout cardLayout;
     public static DefaultTableModel membershipModel;
@@ -86,7 +85,7 @@ public class KicksCorner extends javax.swing.JFrame {
     public static DefaultTableModel roleModel;
     public static DefaultTableModel orderModel;
     public static DefaultTableModel invoiceModel;
-
+    
     public static boolean discountChanged = false;
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private static final int LENGTH = 8;
@@ -98,9 +97,9 @@ public class KicksCorner extends javax.swing.JFrame {
     private static int editableRowOrder = -1;
     private static int selectedRow = -1;
     private static int currentRole;
-
+    
     public KicksCorner() {
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icons/KicksCornerIcon.png")));
         initComponents();
         menu.add(jPanelSearchList);
         cardLayout = (CardLayout) (jPanelCardLayout.getLayout());
@@ -111,9 +110,9 @@ public class KicksCorner extends javax.swing.JFrame {
         GetData.getInventory(inventoryModel);
         setLocationRelativeTo(null);
         jTableMembership.getColumnModel().getColumn(0).setCellRenderer(new CustomCellNoRenderer());
-
+        
     }
-
+    
     public static String generateOrderID() {
         StringBuilder sb = new StringBuilder();
         Random random = new SecureRandom();
@@ -123,37 +122,39 @@ public class KicksCorner extends javax.swing.JFrame {
         }
         return sb.toString();
     }
+    
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-     public Employee getEmployee() {
+    
+    public Employee getEmployee() {
         return employee;
     }
-  
+    
     public void setUsername(String username) {
         jLabelEmployeeName.setText(username);
-
+        
     }
-
+    
     public static void search(JTextField textField, DefaultTableModel model, JTable table) {
         Search.search(textField, model, table);
     }
-
+    
     public static void setDiscountChangedtTrue() {
         discountChanged = true;
     }
-
+    
     public static void setDiscountChangedtFalse() {
         discountChanged = false;
     }
-
+    
     public static void onYes(JTable table, DefaultTableModel model, Consumer<Integer> deleteFunction) {
         selectedRow = table.getSelectedRow();
         deleteFunction.accept((int) selectedID);
         model.removeRow(selectedRow);
         table.repaint();
     }
-
+    
     public void activeFeatureByRole(int role) {
         if (role == 2) {
             jButtonDashboard.setEnabled(false);
@@ -218,7 +219,7 @@ public class KicksCorner extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelEmployeeName = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        jButtonLogOut = new javax.swing.JButton();
         jPanelCardLayout = new javax.swing.JPanel();
         jPanelOrder = new javax.swing.JPanel();
         jTextFieldProductIDOrder = new javax.swing.JTextField();
@@ -819,11 +820,11 @@ public class KicksCorner extends javax.swing.JFrame {
         jLabelEmployeeName.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabelEmployeeName.setText("username");
 
-        jButton5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton5.setText("Log Out");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLogOut.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButtonLogOut.setText("Log Out");
+        jButtonLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonLogOutActionPerformed(evt);
             }
         });
 
@@ -837,7 +838,7 @@ public class KicksCorner extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelEmployeeName)
                 .addGap(113, 113, 113)
-                .addComponent(jButton5)
+                .addComponent(jButtonLogOut)
                 .addGap(14, 14, 14))
         );
         jPanel3Layout.setVerticalGroup(
@@ -848,7 +849,7 @@ public class KicksCorner extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelEmployeeName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5)))
+                        .addComponent(jButtonLogOut)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -989,7 +990,6 @@ public class KicksCorner extends javax.swing.JFrame {
 
         jLabelChange.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabelChange.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelChange.setText("1");
         jLabelChange.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 7)));
 
         jLabel20.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -2438,14 +2438,15 @@ public class KicksCorner extends javax.swing.JFrame {
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
+            .addGroup(jPanel34Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
+                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
+                        .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         jLabel29.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -2609,7 +2610,7 @@ public class KicksCorner extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInventoryActionPerformed
 
     private void jButtonOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOrderActionPerformed
-
+        
         cardLayout.show(jPanelCardLayout, "card4");
     }//GEN-LAST:event_jButtonOrderActionPerformed
 
@@ -2626,10 +2627,16 @@ public class KicksCorner extends javax.swing.JFrame {
         search(jTextFieldSearchMembership, currentModel, currentTable);
     }//GEN-LAST:event_jButtonMembershipActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogOutActionPerformed
+        int choice = JOptionPane.showConfirmDialog(this, "Are you sure you want to log out?", "Log Out Confirmation", JOptionPane.YES_NO_OPTION);
+        if (choice == JOptionPane.YES_OPTION) {
+            // Perform logout actions here
+            KicksCorner.this.dispose(); // Assuming this disposes the current window
+        }
+        Login login = new Login();
+        login.setVisible(true);
 
-
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButtonLogOutActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
@@ -2657,8 +2664,8 @@ public class KicksCorner extends javax.swing.JFrame {
 //        InventoryEditor.addInventory(jTableInventory, selectedRow, listener);
         CompletableFuture<Integer> future = InventoryEditor.addInventory(jTableInventory, selectedRow, listener);
         future.thenAccept(productID -> {
-
-            KicksCornerShow.showProduct(inventoryModel, selectedRow, productID);
+            
+            KicksCornerShow1.showProduct(inventoryModel, selectedRow, productID);
         });
         ListenTableChanged.addInventory(jTableInventory);
     }//GEN-LAST:event_jButtonAddInventoryActionPerformed
@@ -2731,7 +2738,8 @@ public class KicksCorner extends javax.swing.JFrame {
 
     private void jButtonAddNewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddNewProductActionPerformed
         KicksCornerCreate.createNewRowProduct();
-        KicksCornerShow.showNewRowProduct(productModel);
+
+        KicksCornerShow1.showNewRowProduct(productModel);
         selectedRow = jTableProduct.getRowCount() - 1;
         if (selectedRow != -1) {
             editableRowProduct = selectedRow;
@@ -2797,7 +2805,7 @@ public class KicksCorner extends javax.swing.JFrame {
         int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to confirm the order?", "Confirm Order", JOptionPane.YES_NO_OPTION);
         Object[][] data = GetData.getOrderTable(jTableOrder, orderModel);
         String[] title = {"Name", "S.", "Q.", "Price", "Discount", "Amount"};
-
+        
         String phone = null;
         if (!jTextFieldPhoneOrder.getText().equals("")) {
             phone = jTextFieldPhoneOrder.getText();
@@ -2805,11 +2813,11 @@ public class KicksCorner extends javax.swing.JFrame {
         if (dialogResult == JOptionPane.YES_OPTION) {
             int customerID = GetData.getCustomerID(jTextFieldPhoneOrder);
             int employeeID = employee.getEmployeeID();
-            if(customerID == 1){
+            if (customerID == 1) {
                 System.out.println("Equal");
-            } else{
-                                System.out.println("NOT Equal");
-
+            } else {
+                System.out.println("NOT Equal");
+                
             }
             System.out.println(jTextFieldProductIDOrder.getText());
             System.out.println(jTextFieldSizeIDOrder.getText());
@@ -2820,32 +2828,31 @@ public class KicksCorner extends javax.swing.JFrame {
             System.out.println(jLabelTotalInvoice.getText());
             System.out.println(jLabelChange.getText());
             System.out.println(jLabelEmployeeName.getText());
-          
             
             System.out.println("CustomerID: " + customerID);
             Object[] invoiceInfo = GetData.getInvoiceInfo(jTextFieldProductIDOrder, jTextFieldSizeIDOrder, jTextFieldPhoneOrder, jTextFieldUsingPoint, jTextFieldCash, jLabelSubTotal, jLabelTotalInvoice, jLabelChange, jLabelEmployeeName);
             LocalDateTime time = LocalDateTime.now();
             String employeeName = employee.getEmployeeName();
-            System.out.println("Employee: " + employee.getEmployeeName() );
+            System.out.println("Employee: " + employee.getEmployeeName());
             String orderID = generateOrderID();
             boolean isUsed = true;
             while (isUsed) {
                 orderID = generateOrderID();
                 isUsed = GetData.isOrderIDUsed(orderID);
             }
-
+            
             Order order = new Order(orderID, customerID, employeeID, time);
             KicksCornerInsert.insertOrder(order);
-
+            
             String customerName = GetData.getCustomerName(jTextFieldPhoneOrder);
             int pointUsed = Integer.parseInt(jTextFieldUsingPoint.getText());
             double total = Double.parseDouble(jLabelTotalInvoice.getText());
             double subTotal = Double.parseDouble(jLabelSubTotal.getText());
             double cash = Double.parseDouble(jTextFieldCash.getText());
             double change = Double.parseDouble(jLabelChange.getText());
-
+            
             for (int i = 0; i < data.length; i++) {
-
+                
                 int productID = (int) data[i][0];
                 String productName = (String) data[i][1];
                 float size = (float) data[i][2];
@@ -2854,7 +2861,7 @@ public class KicksCorner extends javax.swing.JFrame {
                 double price = (double) data[i][4];
                 double discount = (double) data[i][5];
                 double amount = (double) data[i][6];
-
+                
                 OrderDetail orderDetail = new OrderDetail(orderID, productID, sizeID, price, quantity);
                 KicksCornerInsert.insertOrderDetail(orderDetail);
             }
@@ -2866,18 +2873,16 @@ public class KicksCorner extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConfirmOrderActionPerformed
 
     private void jTextFieldUsingPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsingPointActionPerformed
-
+        
         KicksCorner.this.requestFocus();
     }//GEN-LAST:event_jTextFieldUsingPointActionPerformed
 
     private void jButtonAddProductOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddProductOrderActionPerformed
-
+        
         Object[] infoOrder = GetData.getProductByID(jTextFieldProductIDOrder, jTextFieldSizeIDOrder);
         OrderTable newOrder = new OrderTable(infoOrder);
-        KicksCornerShow.showNewRowOrder(orderModel, newOrder);
-//        KicksCornerInsert.insertEmployee(newEmployee);
-//        KicksCornerShow.showNewRowEmployee(employeeModel);
-//        Register.this.dispose();
+        KicksCornerShow1.showNewRowOrder(orderModel, newOrder);
+
     }//GEN-LAST:event_jButtonAddProductOrderActionPerformed
 
     private void jTextFieldProductIDOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldProductIDOrderActionPerformed
@@ -2909,12 +2914,12 @@ public class KicksCorner extends javax.swing.JFrame {
 
     private void jButtonAddMembershipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMembershipActionPerformed
         KicksCornerCreate.createNewRowMembership();
-        KicksCornerShow.showNewRowMembership(membershipModel);
+        KicksCornerShow1.showNewRowMembership(membershipModel);
         selectedRow = jTableMembership.getRowCount() - 1;
         if (selectedRow != -1) {
             editableRow = selectedRow;
         }
-
+        
         ListenTableChanged.addMembership(jTableMembership);
     }//GEN-LAST:event_jButtonAddMembershipActionPerformed
 
@@ -2982,9 +2987,9 @@ public class KicksCorner extends javax.swing.JFrame {
     private void jTextFieldPhoneOrderFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPhoneOrderFocusLost
         String phone = jTextFieldPhoneOrder.getText();
         if (!phone.isEmpty()) {
-            KicksCornerShow.showPoint(phone, jLabelNamePhone);
+            KicksCornerShow1.showPoint(phone, jLabelNamePhone);
             customerPoint = GetData.getPoint(phone);
-
+            
         }
     }//GEN-LAST:event_jTextFieldPhoneOrderFocusLost
 
@@ -3004,25 +3009,25 @@ public class KicksCorner extends javax.swing.JFrame {
                 double usingPoint = Double.parseDouble(jTextFieldUsingPoint.getText());
                 double invoiceValue = subTotal - usingPoint;
                 jLabelTotalInvoice.setText(String.valueOf(invoiceValue));
-
+                
             } else {
                 JOptionPane.showMessageDialog(this, "The value is invalid. Please enter a value less than or equal to " + customerPoint, "Error", JOptionPane.ERROR_MESSAGE);
-
+                
                 jTextFieldUsingPoint.setText("");
             }
         } catch (NumberFormatException e) {
-
+            
             JOptionPane.showMessageDialog(this, "Please enter a valid integer value.", "Error", JOptionPane.ERROR_MESSAGE);
-
+            
         }
     }//GEN-LAST:event_jTextFieldUsingPointFocusLost
 
     private void jTextFieldCashFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCashFocusLost
-
+        
         try {
             double cash = Double.parseDouble(jTextFieldCash.getText());
             double totalInvoice = Double.parseDouble(jLabelTotalInvoice.getText());
-
+            
             if (cash < totalInvoice) {
                 // Hiển thị thông báo lỗi nếu cash nhỏ hơn totalInvoice
                 JOptionPane.showMessageDialog(this, "Cash must be equal or greater than total invoice.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -3134,7 +3139,7 @@ public class KicksCorner extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new KicksCorner().setVisible(true);
-
+                
             }
         });
     }
@@ -3147,7 +3152,6 @@ public class KicksCorner extends javax.swing.JFrame {
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonAddEmployee;
@@ -3172,6 +3176,7 @@ public class KicksCorner extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEmployee;
     private javax.swing.JButton jButtonExportExcelProduct;
     private javax.swing.JButton jButtonInventory;
+    private javax.swing.JButton jButtonLogOut;
     private javax.swing.JButton jButtonMembership;
     private javax.swing.JButton jButtonNoDeleteMemberShip;
     private javax.swing.JButton jButtonOrder;

@@ -6,8 +6,10 @@ package kickscorner;
 
 import backend.GetData;
 import backend.KicksCornerInsert;
-import backend.KicksCornerShow;
+
+import backend.KicksCornerShow1;
 import classSQL.Employee;
+import java.awt.Toolkit;
 import javax.swing.JTextField;
 import static kickscorner.KicksCorner.employeeModel;
 
@@ -23,11 +25,8 @@ public class Register extends javax.swing.JFrame {
      */
 
     public Register() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icons/KicksCornerIcon.png")));
         initComponents();
-        jTextFieldName.setFocusable(false);
-        jTextFieldUsername.setFocusable(false);
-        jTextFieldPassword.setFocusable(false);
-        jTextFieldPhone .setFocusable(false);
         Register.this.setDefaultCloseOperation(Register.DISPOSE_ON_CLOSE);
     }
 
@@ -239,7 +238,7 @@ public class Register extends javax.swing.JFrame {
         Object[] employeeInfo = GetData.getEmployeeSignUp(jTextFieldName, jTextFieldUsername, jTextFieldPassword, jTextFieldPhone);
         Employee newEmployee = new Employee(employeeInfo);
         KicksCornerInsert.insertEmployee(newEmployee);
-        KicksCornerShow.showNewRowEmployee(employeeModel);
+        KicksCornerShow1.showNewRowEmployee(employeeModel);
         Register.this.dispose();
     }//GEN-LAST:event_jButtonSignUpActionPerformed
 
@@ -248,7 +247,7 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPasswordActionPerformed
 
     private void jTextFieldPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPhoneActionPerformed
-        // TODO add your handling code here:
+        jButtonSignUp.doClick();
     }//GEN-LAST:event_jTextFieldPhoneActionPerformed
 
     private void jTextFieldPhoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPhoneFocusGained
