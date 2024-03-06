@@ -6,13 +6,16 @@ package kickscorner;
 
 import backend.GetData;
 import backend.KicksCornerInsert;
+import backend.KicksCornerShow1;
 
 import classSQL.Customer;
 import classSQL.Employee;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import static kickscorner.KicksCorner.employeeModel;
+import static kickscorner.KicksCorner.membershipModel;
 
 /**
  *
@@ -28,6 +31,10 @@ public class RegisterCustomer extends javax.swing.JFrame {
         initComponents();
 
         RegisterCustomer.this.setDefaultCloseOperation(RegisterCustomer.DISPOSE_ON_CLOSE);
+    }
+
+    public JTextField getJTextFieldPhoneNewCustomer() {
+        return jTextFieldPhoneNewCustomer;
     }
 
     /**
@@ -180,12 +187,18 @@ public class RegisterCustomer extends javax.swing.JFrame {
         Object[] customerInfo = GetData.getNewCustomer(jTextFieldNameNewCustomer, jTextFieldPhoneNewCustomer);
         String name = (String) customerInfo[0];
         String phone = (String) customerInfo[1];
-        Customer newCustomer = new Customer(name, phone);
-        System.out.println(newCustomer.getCustomerName() + newCustomer.getCustomerPhone());
-        KicksCornerInsert.insertMembership(newCustomer);
-        JOptionPane.showMessageDialog(null, "Register success");
+        
+        if (phone.matches("^0[0-9]{9}$")) {         
+            Customer newCustomer = new Customer(name, phone);
+            System.out.println(newCustomer.getCustomerName() + newCustomer.getCustomerPhone());
+            KicksCornerInsert.insertMembership(newCustomer);
+            JOptionPane.showMessageDialog(null, "Register success");
+            RegisterCustomer.this.dispose();
+            KicksCornerShow1.showNewRegisterCustomer(membershipModel, phone);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter a valid phone number (10 digits).", "Invalid Phone Number", JOptionPane.ERROR_MESSAGE);
+        }
 
-        RegisterCustomer.this.dispose();
 
     }//GEN-LAST:event_jButtonRegisterCustomerActionPerformed
 

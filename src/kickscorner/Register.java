@@ -10,9 +10,9 @@ import backend.KicksCornerInsert;
 import backend.KicksCornerShow1;
 import classSQL.Employee;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import static kickscorner.KicksCorner.employeeModel;
-
 
 /**
  *
@@ -23,7 +23,6 @@ public class Register extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-
     public Register() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icons/KicksCornerIcon.png")));
         initComponents();
@@ -47,12 +46,14 @@ public class Register extends javax.swing.JFrame {
         jTextFieldName = new javax.swing.JTextField();
         jTextFieldUsername = new javax.swing.JTextField();
         jButtonSignUp = new javax.swing.JButton();
-        jTextFieldPassword = new javax.swing.JTextField();
+        jTextFieldPassword = new javax.swing.JPasswordField();
         jTextFieldPhone = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextFieldConfirmPassword = new javax.swing.JPasswordField();
 
         jScrollPane1.setViewportView(jTextPane1);
 
@@ -166,6 +167,27 @@ public class Register extends javax.swing.JFrame {
         jLabel5.setText("Phone");
         jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 1, 0, 0));
 
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel6.setText("Confirm Password");
+        jLabel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 1, 0, 0));
+
+        jTextFieldConfirmPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldConfirmPasswordFocusGained(evt);
+            }
+        });
+        jTextFieldConfirmPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldConfirmPasswordMouseClicked(evt);
+            }
+        });
+        jTextFieldConfirmPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldConfirmPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelRegisterLayout = new javax.swing.GroupLayout(jPanelRegister);
         jPanelRegister.setLayout(jPanelRegisterLayout);
         jPanelRegisterLayout.setHorizontalGroup(
@@ -182,7 +204,9 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                    .addComponent(jTextFieldConfirmPassword))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanelRegisterLayout.setVerticalGroup(
@@ -194,21 +218,25 @@ public class Register extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -235,11 +263,18 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldUsernameActionPerformed
 
     private void jButtonSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSignUpActionPerformed
-        Object[] employeeInfo = GetData.getEmployeeSignUp(jTextFieldName, jTextFieldUsername, jTextFieldPassword, jTextFieldPhone);
-        Employee newEmployee = new Employee(employeeInfo);
-        KicksCornerInsert.insertEmployee(newEmployee);
-        KicksCornerShow1.showNewRowEmployee(employeeModel);
-        Register.this.dispose();
+        String password = jTextFieldPassword.getText();
+        String confirmPassword = jTextFieldConfirmPassword.getText();
+        if (password.equals(confirmPassword)) {
+            Object[] employeeInfo = GetData.getEmployeeSignUp(jTextFieldName, jTextFieldUsername, jTextFieldPassword, jTextFieldPhone);
+            Employee newEmployee = new Employee(employeeInfo);
+            KicksCornerInsert.insertEmployee(newEmployee);
+            KicksCornerShow1.showNewRowEmployee(employeeModel);
+            Register.this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Passwords do not match. Please enter matching passwords.", "Password Mismatch", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButtonSignUpActionPerformed
 
     private void jTextFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPasswordActionPerformed
@@ -251,11 +286,11 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPhoneActionPerformed
 
     private void jTextFieldPhoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPhoneFocusGained
-        
+
     }//GEN-LAST:event_jTextFieldPhoneFocusGained
 
     private void jTextFieldNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNameFocusGained
-       
+
     }//GEN-LAST:event_jTextFieldNameFocusGained
 
     private void jTextFieldNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldNameMouseClicked
@@ -264,11 +299,11 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNameMouseClicked
 
     private void jTextFieldUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldUsernameFocusGained
-       
+
     }//GEN-LAST:event_jTextFieldUsernameFocusGained
 
     private void jTextFieldPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPasswordFocusGained
-        
+
     }//GEN-LAST:event_jTextFieldPasswordFocusGained
 
     private void jTextFieldUsernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUsernameMouseClicked
@@ -287,8 +322,20 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPhoneMouseClicked
 
     private void jTextFieldNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNameFocusLost
-      
+
     }//GEN-LAST:event_jTextFieldNameFocusLost
+
+    private void jTextFieldConfirmPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldConfirmPasswordFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldConfirmPasswordFocusGained
+
+    private void jTextFieldConfirmPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldConfirmPasswordMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldConfirmPasswordMouseClicked
+
+    private void jTextFieldConfirmPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldConfirmPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldConfirmPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,7 +370,7 @@ public class Register extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -340,8 +387,10 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanelRegister;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextFieldConfirmPassword;
     private javax.swing.JTextField jTextFieldName;
     private javax.swing.JTextField jTextFieldPassword;
     private javax.swing.JTextField jTextFieldPhone;

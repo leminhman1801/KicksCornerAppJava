@@ -9,6 +9,7 @@ import backend.KicksCornerCreate;
 import backend.KicksCornerDelete;
 import backend.KicksCornerInsert;
 import backend.KicksCornerShow1;
+import backend.KicksCornerUpdate;
 import backend.ListenTableChanged;
 
 import backend.ProductIDListener;
@@ -37,6 +38,7 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
+import java.util.EventObject;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
@@ -73,9 +75,9 @@ public class KicksCorner extends javax.swing.JFrame {
     public static JTextField currentTextField;
     public static String currentTitle;
     private Employee employee;
-    
+
     private static Consumer<Integer> deleteFunction;
-    
+
     private static Object selectedID;
     CardLayout cardLayout;
     public static DefaultTableModel membershipModel;
@@ -85,7 +87,7 @@ public class KicksCorner extends javax.swing.JFrame {
     public static DefaultTableModel roleModel;
     public static DefaultTableModel orderModel;
     public static DefaultTableModel invoiceModel;
-    
+
     public static boolean discountChanged = false;
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private static final int LENGTH = 8;
@@ -95,9 +97,10 @@ public class KicksCorner extends javax.swing.JFrame {
     private static int editableRowInventory = -1;
     private static int editableRowProduct = -1;
     private static int editableRowOrder = -1;
+    private static int editableRowRole = -1;
     private static int selectedRow = -1;
     private static int currentRole;
-    
+
     public KicksCorner() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icons/KicksCornerIcon.png")));
         initComponents();
@@ -110,9 +113,21 @@ public class KicksCorner extends javax.swing.JFrame {
         GetData.getInventory(inventoryModel);
         setLocationRelativeTo(null);
         jTableMembership.getColumnModel().getColumn(0).setCellRenderer(new CustomCellNoRenderer());
-        
+
     }
-    
+
+    public static DefaultTableModel getMembershipModel() {
+        return membershipModel;
+    }
+    private boolean isEmptyRow(JTable table, int row) {
+    for (int col = 0; col < table.getColumnCount(); col++) {
+        Object value = table.getValueAt(row, col);
+        if (value != null && !value.toString().isEmpty()) {
+            return false;
+        }
+    }
+    return true;
+}
     public static String generateOrderID() {
         StringBuilder sb = new StringBuilder();
         Random random = new SecureRandom();
@@ -122,39 +137,39 @@ public class KicksCorner extends javax.swing.JFrame {
         }
         return sb.toString();
     }
-    
+
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-    
+
     public Employee getEmployee() {
         return employee;
     }
-    
+
     public void setUsername(String username) {
         jLabelEmployeeName.setText(username);
-        
+
     }
-    
+
     public static void search(JTextField textField, DefaultTableModel model, JTable table) {
         Search.search(textField, model, table);
     }
-    
+
     public static void setDiscountChangedtTrue() {
         discountChanged = true;
     }
-    
+
     public static void setDiscountChangedtFalse() {
         discountChanged = false;
     }
-    
+
     public static void onYes(JTable table, DefaultTableModel model, Consumer<Integer> deleteFunction) {
         selectedRow = table.getSelectedRow();
         deleteFunction.accept((int) selectedID);
         model.removeRow(selectedRow);
         table.repaint();
     }
-    
+
     public void activeFeatureByRole(int role) {
         if (role == 2) {
             jButtonDashboard.setEnabled(false);
@@ -990,6 +1005,7 @@ public class KicksCorner extends javax.swing.JFrame {
 
         jLabelChange.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabelChange.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelChange.setText("0");
         jLabelChange.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 7)));
 
         jLabel20.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -1017,6 +1033,7 @@ public class KicksCorner extends javax.swing.JFrame {
 
         jLabelSubTotal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabelSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelSubTotal.setText("0");
         jLabelSubTotal.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 7)));
 
         jLabelTotalText.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -1024,6 +1041,7 @@ public class KicksCorner extends javax.swing.JFrame {
 
         jLabelTotalInvoice.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabelTotalInvoice.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelTotalInvoice.setText("0");
         jLabelTotalInvoice.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 7)));
 
         jButtonConfirmOrder.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -1518,8 +1536,8 @@ public class KicksCorner extends javax.swing.JFrame {
         headerMembership.setDefaultRenderer(new CustomCellNoRenderer());
         jTableMembership.setModel(membershipModel);
         int customerIDColumnIndex = 1;
-        //jTableMembership.getColumnModel().getColumn(1).setMinWidth(0);
-        //jTableMembership.getColumnModel().getColumn(1).setMaxWidth(0);
+        jTableMembership.getColumnModel().getColumn(1).setMinWidth(0);
+        jTableMembership.getColumnModel().getColumn(1).setMaxWidth(0);
         jTableMembership.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jTableMembership.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -2234,7 +2252,7 @@ public class KicksCorner extends javax.swing.JFrame {
                 .addComponent(jButtonExportExcelProduct)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonPrintProduct)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
                 .addComponent(jTextFieldSearchProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -2335,7 +2353,7 @@ public class KicksCorner extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelProductLayout = new javax.swing.GroupLayout(jPanelProduct);
@@ -2363,15 +2381,9 @@ public class KicksCorner extends javax.swing.JFrame {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class
             };
             public void setValueAt(Object aValue, int row, int column) {
-                if (column == 0) {
-                    super.setValueAt(aValue, row, column);
-                    for (int i = 0; i < getRowCount(); i++) {
-                        setValueAt(i + 1, i, 0);
-                    }
-                } else {
-                    super.setValueAt(aValue, row, column);
-                }
+                super.setValueAt(aValue, row, column);
             }
+
             public Class<?> getColumnClass(int columnIndex) {
                 if (columnIndex == 0) {
                     return Integer.class;
@@ -2379,17 +2391,26 @@ public class KicksCorner extends javax.swing.JFrame {
                 return super.getColumnClass(columnIndex);
             }
             public boolean isCellEditable(int row, int column) {
-                return row == editableRow && column != 0;
+                return row == editableRowRole && column != 0;
             }
         };
+        roleModel.addTableModelListener(new TableModelListener() {
+            public void tableChanged(TableModelEvent e) {
+                // Kiểm tra xem có thay đổi trong dữ liệu không
+                if (e.getType() == TableModelEvent.INSERT || e.getType() == TableModelEvent.DELETE) {
+                    // Cập nhật lại số thứ tự cho các hàng sau mỗi lần thay đổi dữ liệu
+                    for (int i = 0; i < roleModel.getRowCount(); i++) {
+                        roleModel.setValueAt(i + 1, i, 0); // Cột STT (index 0)
+                    }
+                }
+            }
+        });
         jTableRole.setFont(new java.awt.Font("SansSerif", 0, 16));
         jTableRole.setModel(roleModel);
         JTableHeader headerRole = jTableRole.getTableHeader();
         jTableRole.setDefaultRenderer(Object.class, new CustomCellNoRenderer());
         headerRole.setDefaultRenderer(new CustomCellNoRenderer());
         int roleIDColumnIndex = 1;
-        //jTableEmployee.getColumnModel().getColumn(1).setMinWidth(0);
-        //jTableEmployee.getColumnModel().getColumn(1).setMaxWidth(0);
         jTableRole.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jTableRole.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -2405,6 +2426,11 @@ public class KicksCorner extends javax.swing.JFrame {
             }
         });
         jTableRole.setRowHeight(30);
+        jTableRole.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTableRoleFocusLost(evt);
+            }
+        });
         jScrollPane6.setViewportView(jTableRole);
 
         jPanel34.setBackground(new java.awt.Color(255, 255, 255));
@@ -2610,7 +2636,7 @@ public class KicksCorner extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInventoryActionPerformed
 
     private void jButtonOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOrderActionPerformed
-        
+
         cardLayout.show(jPanelCardLayout, "card4");
     }//GEN-LAST:event_jButtonOrderActionPerformed
 
@@ -2664,7 +2690,7 @@ public class KicksCorner extends javax.swing.JFrame {
 //        InventoryEditor.addInventory(jTableInventory, selectedRow, listener);
         CompletableFuture<Integer> future = InventoryEditor.addInventory(jTableInventory, selectedRow, listener);
         future.thenAccept(productID -> {
-            
+
             KicksCornerShow1.showProduct(inventoryModel, selectedRow, productID);
         });
         ListenTableChanged.addInventory(jTableInventory);
@@ -2773,7 +2799,13 @@ public class KicksCorner extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButtonAddRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddRoleActionPerformed
-        // TODO add your handling code here:
+        roleModel.addRow(new Object[]{"", "", "", ""});
+        selectedRow = jTableRole.getRowCount() - 1;
+        if (selectedRow != -1) {
+            editableRowRole = selectedRow;
+             jTableRole.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(new JTextField()));
+        }
+        ListenTableChanged.addRole(jTableRole);
     }//GEN-LAST:event_jButtonAddRoleActionPerformed
 
     private void jButtonDeleteRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteRoleActionPerformed
@@ -2781,7 +2813,18 @@ public class KicksCorner extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteRoleActionPerformed
 
     private void jButtonEditRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditRoleActionPerformed
-        // TODO add your handling code here:
+          selectedRow = jTableRole.getSelectedRow();
+        if (selectedRow != -1) {
+            int modelRow = jTableRole.convertRowIndexToModel(selectedRow);
+            editableRowRole = modelRow;
+            jTableRole.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(new JTextField()) {
+            @Override
+            public boolean isCellEditable(EventObject e) {
+                return false; // Khi click edit, cột 1 sẽ không thể chỉnh sửa
+            }
+        });
+        }
+        ListenTableChanged.editRole(jTableRole);
     }//GEN-LAST:event_jButtonEditRoleActionPerformed
 
     private void jButtonEditOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditOrderActionPerformed
@@ -2805,7 +2848,6 @@ public class KicksCorner extends javax.swing.JFrame {
         int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to confirm the order?", "Confirm Order", JOptionPane.YES_NO_OPTION);
         Object[][] data = GetData.getOrderTable(jTableOrder, orderModel);
         String[] title = {"Name", "S.", "Q.", "Price", "Discount", "Amount"};
-        
         String phone = null;
         if (!jTextFieldPhoneOrder.getText().equals("")) {
             phone = jTextFieldPhoneOrder.getText();
@@ -2813,23 +2855,7 @@ public class KicksCorner extends javax.swing.JFrame {
         if (dialogResult == JOptionPane.YES_OPTION) {
             int customerID = GetData.getCustomerID(jTextFieldPhoneOrder);
             int employeeID = employee.getEmployeeID();
-            if (customerID == 1) {
-                System.out.println("Equal");
-            } else {
-                System.out.println("NOT Equal");
-                
-            }
-            System.out.println(jTextFieldProductIDOrder.getText());
-            System.out.println(jTextFieldSizeIDOrder.getText());
-            System.out.println(jTextFieldPhoneOrder.getText());
-            System.out.println(jTextFieldUsingPoint.getText());
-            System.out.println(jTextFieldCash.getText());
-            System.out.println(jLabelSubTotal.getText());
-            System.out.println(jLabelTotalInvoice.getText());
-            System.out.println(jLabelChange.getText());
-            System.out.println(jLabelEmployeeName.getText());
-            
-            System.out.println("CustomerID: " + customerID);
+
             Object[] invoiceInfo = GetData.getInvoiceInfo(jTextFieldProductIDOrder, jTextFieldSizeIDOrder, jTextFieldPhoneOrder, jTextFieldUsingPoint, jTextFieldCash, jLabelSubTotal, jLabelTotalInvoice, jLabelChange, jLabelEmployeeName);
             LocalDateTime time = LocalDateTime.now();
             String employeeName = employee.getEmployeeName();
@@ -2840,19 +2866,22 @@ public class KicksCorner extends javax.swing.JFrame {
                 orderID = generateOrderID();
                 isUsed = GetData.isOrderIDUsed(orderID);
             }
-            
             Order order = new Order(orderID, customerID, employeeID, time);
             KicksCornerInsert.insertOrder(order);
-            
             String customerName = GetData.getCustomerName(jTextFieldPhoneOrder);
             int pointUsed = Integer.parseInt(jTextFieldUsingPoint.getText());
             double total = Double.parseDouble(jLabelTotalInvoice.getText());
             double subTotal = Double.parseDouble(jLabelSubTotal.getText());
             double cash = Double.parseDouble(jTextFieldCash.getText());
             double change = Double.parseDouble(jLabelChange.getText());
-            
+            double rewardPoints = total * 0.05;
+            int initPoint = GetData.getPoint(phone);
+            int currentPoint = initPoint - pointUsed + (int)rewardPoints;
+            KicksCornerUpdate.updateMembership(currentPoint, phone);
+            membershipModel.setRowCount(0);
+            GetData.getMemberShip(membershipModel);
             for (int i = 0; i < data.length; i++) {
-                
+
                 int productID = (int) data[i][0];
                 String productName = (String) data[i][1];
                 float size = (float) data[i][2];
@@ -2861,24 +2890,33 @@ public class KicksCorner extends javax.swing.JFrame {
                 double price = (double) data[i][4];
                 double discount = (double) data[i][5];
                 double amount = (double) data[i][6];
-                
+
                 OrderDetail orderDetail = new OrderDetail(orderID, productID, sizeID, price, quantity);
                 KicksCornerInsert.insertOrderDetail(orderDetail);
             }
             PDFGenerator.printPanel(orderID, time, customerName, employeeName, phone, data, title, subTotal, pointUsed, total, cash, change);
-            
+            jTextFieldPhoneOrder.setText("");
+            jTextFieldProductIDOrder.setText("");
+            jTextFieldSizeIDOrder.setText("");
+            jTextFieldUsingPoint.setText("");
+            jTextFieldCash.setText("");
+            jLabelNamePhone.setText("");
+            jLabelSubTotal.setText("0.0");
+            jLabelTotalInvoice.setText("0.0");
+            jLabelChange.setText("0.0");
+            orderModel.setRowCount(0);
         } else {
         }
 
     }//GEN-LAST:event_jButtonConfirmOrderActionPerformed
 
     private void jTextFieldUsingPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsingPointActionPerformed
-        
+
         KicksCorner.this.requestFocus();
     }//GEN-LAST:event_jTextFieldUsingPointActionPerformed
 
     private void jButtonAddProductOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddProductOrderActionPerformed
-        
+
         Object[] infoOrder = GetData.getProductByID(jTextFieldProductIDOrder, jTextFieldSizeIDOrder);
         OrderTable newOrder = new OrderTable(infoOrder);
         KicksCornerShow1.showNewRowOrder(orderModel, newOrder);
@@ -2919,7 +2957,7 @@ public class KicksCorner extends javax.swing.JFrame {
         if (selectedRow != -1) {
             editableRow = selectedRow;
         }
-        
+
         ListenTableChanged.addMembership(jTableMembership);
     }//GEN-LAST:event_jButtonAddMembershipActionPerformed
 
@@ -2985,11 +3023,14 @@ public class KicksCorner extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSizeIDOrderActionPerformed
 
     private void jTextFieldPhoneOrderFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPhoneOrderFocusLost
-        String phone = jTextFieldPhoneOrder.getText();
+        String phone = jTextFieldPhoneOrder.getText().trim();
         if (!phone.isEmpty()) {
-            KicksCornerShow1.showPoint(phone, jLabelNamePhone);
-            customerPoint = GetData.getPoint(phone);
-            
+            if (phone.matches("^0[0-9]{9}$")) {
+                KicksCornerShow1.showPoint(phone, jLabelNamePhone);
+                customerPoint = GetData.getPoint(phone);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter a valid phone number starting with 0 and containing only digits (10 digits in total).", "Invalid Phone Number", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jTextFieldPhoneOrderFocusLost
 
@@ -3009,25 +3050,25 @@ public class KicksCorner extends javax.swing.JFrame {
                 double usingPoint = Double.parseDouble(jTextFieldUsingPoint.getText());
                 double invoiceValue = subTotal - usingPoint;
                 jLabelTotalInvoice.setText(String.valueOf(invoiceValue));
-                
+
             } else {
                 JOptionPane.showMessageDialog(this, "The value is invalid. Please enter a value less than or equal to " + customerPoint, "Error", JOptionPane.ERROR_MESSAGE);
-                
+
                 jTextFieldUsingPoint.setText("");
             }
         } catch (NumberFormatException e) {
-            
+
             JOptionPane.showMessageDialog(this, "Please enter a valid integer value.", "Error", JOptionPane.ERROR_MESSAGE);
-            
+
         }
     }//GEN-LAST:event_jTextFieldUsingPointFocusLost
 
     private void jTextFieldCashFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCashFocusLost
-        
+
         try {
             double cash = Double.parseDouble(jTextFieldCash.getText());
             double totalInvoice = Double.parseDouble(jLabelTotalInvoice.getText());
-            
+
             if (cash < totalInvoice) {
                 // Hiển thị thông báo lỗi nếu cash nhỏ hơn totalInvoice
                 JOptionPane.showMessageDialog(this, "Cash must be equal or greater than total invoice.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -3043,6 +3084,10 @@ public class KicksCorner extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter a valid number for cash.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jTextFieldCashFocusLost
+
+    private void jTableRoleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTableRoleFocusLost
+        
+    }//GEN-LAST:event_jTableRoleFocusLost
 
     /**
      * @param args the command line arguments
@@ -3139,7 +3184,7 @@ public class KicksCorner extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new KicksCorner().setVisible(true);
-                
+
             }
         });
     }

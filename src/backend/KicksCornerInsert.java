@@ -10,6 +10,7 @@ import classSQL.Inventory;
 import classSQL.Order;
 import classSQL.OrderDetail;
 import classSQL.Product;
+import classSQL.Role;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
@@ -111,6 +112,20 @@ public class KicksCornerInsert {
             psmt.setInt(3, newOrderDetail.getSizeID());
             psmt.setDouble(4, newOrderDetail.getPrice());
             psmt.setInt(5, newOrderDetail.getQuantity());
+            psmt.executeUpdate();
+            System.out.println("Inserted");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+     public static void insertRole(Role role) {
+        try {
+            String sql = "Insert Into [Role] (roleID, roleName, permission) Values (?, ?, ?)";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setInt(1, role.getRoleID());
+            psmt.setString(2, role.getRoleName());
+            psmt.setString(3, role.getPermission());
+       
             psmt.executeUpdate();
             System.out.println("Inserted");
         } catch (SQLException ex) {

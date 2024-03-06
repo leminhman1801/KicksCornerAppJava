@@ -8,6 +8,7 @@ import classSQL.Customer;
 import classSQL.Employee;
 import classSQL.Inventory;
 import classSQL.Product;
+import classSQL.Role;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -68,24 +69,6 @@ public class ListenTableChanged {
             int row = e.getFirstRow();
             int column = e.getColumn();
             if (e.getType() == TableModelEvent.UPDATE && row >= 0 && column >= 0) {
-
-//                if (column == 3) {
-//                    Object cellValue = table.getValueAt(row, column);
-//                    if (cellValue != null) {
-//                        double price;
-//                        try {
-//                            price = Double.parseDouble(cellValue.toString());
-//                                 price = Math.round(price * 100.0) / 100.0;
-//                        } catch (NumberFormatException ex) {
-//                            JOptionPane.showMessageDialog(null, "Invalid price format. Please enter a valid number.");
-//                            // Đặt giá trị mặc định cho ô đó hoặc xử lý lỗi theo ý muốn của bạn
-//                            table.setValueAt(null, row, column);
-//                            return;
-//                        }
-//                        // Đặt lại giá trị đã định dạng vào ô đó
-//                        table.setValueAt(price, row, column);
-//                    }
-//                }
                 System.out.println("Updated");
                 if (table.getValueAt(row, column) != null && !table.getValueAt(row, column).toString().trim().isEmpty()) {
                     nonEmptyCount[0]++;
@@ -110,22 +93,20 @@ public class ListenTableChanged {
 
     public static void addInventory(JTable table) {
         table.getModel().addTableModelListener((TableModelEvent e) -> {
-            if (e.getType() == TableModelEvent.UPDATE) { // Kiểm tra xem có sự kiện cập nhật ô trong bảng không
+            if (e.getType() == TableModelEvent.UPDATE) { 
                 int row = e.getFirstRow();
                 int column = e.getColumn();
 
-                // Kiểm tra xem ô được cập nhật có thuộc hàng mới được thêm vào không
+                
                 if (row == table.getRowCount() - 1) {
                     boolean allCellsFilled = true;
-                    for (int i = 1; i < table.getColumnCount(); i++) { // Bắt đầu từ cột 1 (loại bỏ cột "No.")
+                    for (int i = 1; i < table.getColumnCount(); i++) { 
                         Object cellValue = table.getValueAt(row, i);
                         if (cellValue == null || cellValue.toString().trim().isEmpty()) {
                             allCellsFilled = false;
                             break;
                         }
-                    }
-
-                    // Nếu tất cả các ô đã được nhập, thực hiện xử lý sự kiện
+                    }        
                     if (allCellsFilled) {
                         int newRowIndex = table.getRowCount() - 1;
                         Object[] newRowValue = new Object[table.getColumnCount() - 1];
@@ -137,6 +118,34 @@ public class ListenTableChanged {
                         System.out.println("" + newRowValue[0] + newRowValue[1] + newRowValue[2] + newRowValue[3]);
                         Inventory newProductSize = new Inventory(newRowValue);
                         KicksCornerInsert.insertInventory(newProductSize);
+
+                    }
+                }
+            }
+        });
+    }
+     public static void addRole(JTable table) {
+        table.getModel().addTableModelListener((TableModelEvent e) -> {
+            if (e.getType() == TableModelEvent.UPDATE) { 
+                int row = e.getFirstRow();
+                int column = e.getColumn();
+                if (row == table.getRowCount() - 1) {
+                    boolean allCellsFilled = true;
+                    for (int i = 1; i < table.getColumnCount(); i++) { 
+                        Object cellValue = table.getValueAt(row, i);
+                        if (cellValue == null || cellValue.toString().trim().isEmpty()) {
+                            allCellsFilled = false;
+                            break;
+                        }
+                    }        
+                    if (allCellsFilled) {
+                        int newRowIndex = table.getRowCount() - 1;
+                        
+                        int roleID = (int) table.getValueAt(newRowIndex, 0);
+                    String roleName = (String) table.getValueAt(newRowIndex, 1);
+                    String permission = (String) (table.getValueAt(newRowIndex, 2));
+                        Role role = new Role(roleID, roleName, permission);
+                        KicksCornerInsert.insertRole(role);
 
                     }
                 }
@@ -273,5 +282,35 @@ public class ListenTableChanged {
         });
 
     }
+    
+public static void editRole(JTable table) {
 
+        table.getModel().addTableModelListener((TableModelEvent e) -> {
+
+            if (e.getType() == TableModelEvent.UPDATE) {
+                int row = table.getSelectedRow();
+                int column = e.getColumn();
+
+                System.out.println("Updated");
+                if (column == 0) {
+
+                    return;
+                }
+                Object[] editedRowValue = new Object[table.getColumnCount() - 1];
+                if (row >= 0 && column >= 0) {
+
+                    for (int currentCol = 1; currentCol < table.getColumnCount(); currentCol++) {
+                        editedRowValue[currentCol - 1] = table.getValueAt(row, currentCol);
+                    }
+                }
+                
+                int roleID = (int) editedRowValue[0];
+                String roleName = (String) editedRowValue[1];
+                String permission = (String) editedRowValue[2];
+                
+                Role editedRole = new Role(roleID, roleName, permission);
+                KicksCornerUpdate.updateRole(editedRole);
+            }
+        });
+    }
 }

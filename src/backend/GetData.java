@@ -88,8 +88,9 @@ public class GetData {
         Object[] employeeInfo = new Object[4];
         employeeInfo[0] = name.getText();
         employeeInfo[1] = username.getText();
-        employeeInfo[2] = phone.getText();
-        employeeInfo[3] = password.getText();
+        employeeInfo[2] = password.getText();
+        employeeInfo[3] = phone.getText();
+        
         return employeeInfo;
     }
 
@@ -247,8 +248,10 @@ public class GetData {
 
     public static void getInventory(DefaultTableModel inventoryModel) {
         try {
-            String sql = "Select Product.productID, Product.productName, ProductSize.sizeID, Product.price, ProductSize.amount, ProductSize.discount\n"
-                    + "From Product\n" + "Inner Join ProductSize On Product.productID = ProductSize.productID";
+            String sql = """
+                         Select Product.productID, Product.productName, ProductSize.sizeID, Product.price, ProductSize.amount, ProductSize.discount
+                         From Product
+                         Inner Join ProductSize On Product.productID = ProductSize.productID""";
             PreparedStatement psmt = conn.prepareStatement(sql);
             ResultSet result = psmt.executeQuery();
             int columnCount = inventoryModel.getColumnCount() - 1;
@@ -280,7 +283,7 @@ public class GetData {
     public static int getPoint(String phone) {
 
         try {
-            String sql = "Select  customerPoint From Customer Where customerPhone = ?";
+            String sql = "Select customerPoint From Customer Where customerPhone = ?";
             PreparedStatement psmt = conn.prepareStatement(sql);
             psmt.setString(1, phone);
             ResultSet result = psmt.executeQuery();

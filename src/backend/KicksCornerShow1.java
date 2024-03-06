@@ -88,6 +88,25 @@ public class KicksCornerShow1 {
             Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     public static void showNewRegisterCustomer(DefaultTableModel membershipModel, String phone) {
+        try {
+            String sql = "Select * From Customer Where customerPhone = ?";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setString(1, phone);
+            ResultSet result = psmt.executeQuery();
+            int columnCount = result.getMetaData().getColumnCount();
+
+            while (result.next()) {
+                Object[] rowData = new Object[columnCount + 1];
+                for (int i = 1; i <= columnCount; i++) {
+                    rowData[i] = result.getObject(i);
+                }
+                membershipModel.addRow(rowData);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public static void showNewRowOrder(DefaultTableModel orderModel, OrderTable newOrder) {
         try {
@@ -186,14 +205,15 @@ public class KicksCornerShow1 {
                 String customerName = result.getString("customerName");
                 label.setText(String.valueOf("Name: " + customerName + ", point: " + customerPoint));
             } else {
-//                int option = JOptionPane.showConfirmDialog(null, "This phone number is not registered. Do you want to sign up as a member?");
+//               
                 int option = JOptionPane.showConfirmDialog(null, "This phone number is not registered. Do you want to sign up as a member?", "Membership Confirmation", JOptionPane.YES_NO_OPTION);
 
                 if (option == JOptionPane.YES_OPTION) {
                     RegisterCustomer registerCustomer = new RegisterCustomer();
+                    registerCustomer.getJTextFieldPhoneNewCustomer().setText(phone);
                     registerCustomer.setVisible(true);
                 } else {
-                    // Xử lý khi người dùng không muốn đăng ký thành viên
+                   
                 }
             }
         } catch (SQLException ex) {

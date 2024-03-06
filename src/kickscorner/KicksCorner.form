@@ -1236,6 +1236,7 @@
                           <Font name="SansSerif" size="16" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                             <CompoundBorder>
@@ -1307,6 +1308,7 @@
                           <Font name="SansSerif" size="16" style="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                             <CompoundBorder>
@@ -1335,6 +1337,7 @@
                           <Font name="SansSerif" size="16" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                             <CompoundBorder>
@@ -2018,7 +2021,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="JTableHeader headerMembership = jTableMembership.getTableHeader();&#xa;jTableMembership.setDefaultRenderer(Object.class, new CustomCellNoRenderer());&#xa;headerMembership.setDefaultRenderer(new CustomCellNoRenderer());">
                               <Connection code="new java.awt.Font(&quot;SansSerif&quot;, 0, 16)" type="code"/>
                             </Property>
-                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="int customerIDColumnIndex = 1;&#xa;//jTableMembership.getColumnModel().getColumn(1).setMinWidth(0);&#xa;//jTableMembership.getColumnModel().getColumn(1).setMaxWidth(0);&#xa;jTableMembership.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);&#xa;jTableMembership.getSelectionModel().addListSelectionListener(new ListSelectionListener() {&#xa;            @Override&#xa;            public void valueChanged(ListSelectionEvent e) {&#xa;                if (!e.getValueIsAdjusting()) {&#xa;                    int selectedRow = jTableMembership.getSelectedRow();&#xa;&#xa;                    if (selectedRow != -1) {&#xa;                        // Assuming customerID is in the first column (column index 0)&#xa;                        selectedID = jTableMembership.getValueAt(selectedRow, customerIDColumnIndex);&#xa;System.out.println(&quot;Selected Customer ID: &quot; + selectedID);&#xa;                    }&#xa;                }&#xa;            }&#xa;        });">
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="int customerIDColumnIndex = 1;&#xa;jTableMembership.getColumnModel().getColumn(1).setMinWidth(0);&#xa;jTableMembership.getColumnModel().getColumn(1).setMaxWidth(0);&#xa;jTableMembership.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);&#xa;jTableMembership.getSelectionModel().addListSelectionListener(new ListSelectionListener() {&#xa;            @Override&#xa;            public void valueChanged(ListSelectionEvent e) {&#xa;                if (!e.getValueIsAdjusting()) {&#xa;                    int selectedRow = jTableMembership.getSelectedRow();&#xa;&#xa;                    if (selectedRow != -1) {&#xa;                        // Assuming customerID is in the first column (column index 0)&#xa;                        selectedID = jTableMembership.getValueAt(selectedRow, customerIDColumnIndex);&#xa;System.out.println(&quot;Selected Customer ID: &quot; + selectedID);&#xa;                    }&#xa;                }&#xa;            }&#xa;        });">
                               <Connection code="membershipModel" type="code"/>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -2791,7 +2794,7 @@
                               <Component id="jScrollPane5" min="-2" pref="324" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel32" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="47" max="32767" attributes="0"/>
+                              <EmptySpace pref="53" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2841,7 +2844,7 @@
                                   <Component id="jButtonExportExcelProduct" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jButtonPrintProduct" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="382" max="32767" attributes="0"/>
+                                  <EmptySpace pref="289" max="32767" attributes="0"/>
                                   <Component id="jTextFieldSearchProduct" min="-2" pref="315" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -3086,7 +3089,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="new java.awt.Font(&quot;SansSerif&quot;, 0, 16)" type="code"/>
                             </Property>
-                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="JTableHeader headerRole = jTableRole.getTableHeader();&#xa;jTableRole.setDefaultRenderer(Object.class, new CustomCellNoRenderer());&#xa;headerRole.setDefaultRenderer(new CustomCellNoRenderer());&#xa;int roleIDColumnIndex = 1;&#xa;//jTableEmployee.getColumnModel().getColumn(1).setMinWidth(0);&#xa;//jTableEmployee.getColumnModel().getColumn(1).setMaxWidth(0);&#xa;jTableRole.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);&#xa;jTableRole.getSelectionModel().addListSelectionListener(new ListSelectionListener() {&#xa;            @Override&#xa;            public void valueChanged(ListSelectionEvent e) {&#xa;                if (!e.getValueIsAdjusting()) {&#xa;                    int selectedRow = jTableRole.getSelectedRow();&#xa;&#xa;                    if (selectedRow != -1) {&#xa;                        // Assuming customerID is in the first column (column index 0)&#xa;                        selectedID = jTableRole.getValueAt(selectedRow, roleIDColumnIndex);&#xa;                    }&#xa;                }&#xa;            }&#xa;        });&#xa;jTableRole.setRowHeight(30);">
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="JTableHeader headerRole = jTableRole.getTableHeader();&#xa;jTableRole.setDefaultRenderer(Object.class, new CustomCellNoRenderer());&#xa;headerRole.setDefaultRenderer(new CustomCellNoRenderer());&#xa;int roleIDColumnIndex = 1;&#xa;jTableRole.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);&#xa;jTableRole.getSelectionModel().addListSelectionListener(new ListSelectionListener() {&#xa;            @Override&#xa;            public void valueChanged(ListSelectionEvent e) {&#xa;                if (!e.getValueIsAdjusting()) {&#xa;                    int selectedRow = jTableRole.getSelectedRow();&#xa;&#xa;                    if (selectedRow != -1) {&#xa;                        // Assuming customerID is in the first column (column index 0)&#xa;                        selectedID = jTableRole.getValueAt(selectedRow, roleIDColumnIndex);&#xa;                    }&#xa;                }&#xa;            }&#xa;        });&#xa;jTableRole.setRowHeight(30);">
                               <Connection code="roleModel" type="code"/>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -3096,8 +3099,11 @@
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTableRoleFocusLost"/>
+                          </Events>
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="roleModel = new DefaultTableModel(&#xa;    null,&#xa;    new String [] {&#xa;        &quot;No.&quot;, &quot;Role ID&quot;, &quot;Role Name&quot;, &quot;Permission&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class&#xa;    };&#xa;    public void setValueAt(Object aValue, int row, int column) {&#xa;       if (column == 0) { &#xa;            super.setValueAt(aValue, row, column);&#xa;            for (int i = 0; i &lt; getRowCount(); i++) {&#xa;            setValueAt(i + 1, i, 0);&#xa;            }&#xa;        } else {&#xa;        super.setValueAt(aValue, row, column);&#xa;        }&#xa;    }&#xa;    public Class&lt;?&gt; getColumnClass(int columnIndex) {&#xa;        if (columnIndex == 0) {&#xa;            return Integer.class;&#xa;        }&#xa;        return super.getColumnClass(columnIndex);&#xa;    }&#xa;    public boolean isCellEditable(int row, int column) {&#xa;      return row == editableRow &amp;&amp; column != 0;&#xa;    }&#xa;};"/>
+                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="roleModel = new DefaultTableModel(&#xa;    null,&#xa;    new String [] {&#xa;        &quot;No.&quot;, &quot;Role ID&quot;, &quot;Role Name&quot;, &quot;Permission&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class&#xa;    };&#xa;    public void setValueAt(Object aValue, int row, int column) {&#xa;        super.setValueAt(aValue, row, column);&#xa;    }&#xa;&#xa;    public Class&lt;?&gt; getColumnClass(int columnIndex) {&#xa;        if (columnIndex == 0) {&#xa;            return Integer.class;&#xa;        }&#xa;        return super.getColumnClass(columnIndex);&#xa;    }&#xa;     public boolean isCellEditable(int row, int column) {&#xa;      return row == editableRowRole &amp;&amp; column != 0;&#xa;    }&#xa;};  &#xa;    roleModel.addTableModelListener(new TableModelListener() {&#xa;    public void tableChanged(TableModelEvent e) {&#xa;        // Ki&#x1ec3;m tra xem c&#xf3; thay &#x111;&#x1ed5;i trong d&#x1eef; li&#x1ec7;u kh&#xf4;ng&#xa;        if (e.getType() == TableModelEvent.INSERT || e.getType() == TableModelEvent.DELETE) {&#xa;            // C&#x1ead;p nh&#x1ead;t l&#x1ea1;i s&#x1ed1; th&#x1ee9; t&#x1ef1; cho c&#xe1;c h&#xe0;ng sau m&#x1ed7;i l&#x1ea7;n thay &#x111;&#x1ed5;i d&#x1eef; li&#x1ec7;u&#xa;            for (int i = 0; i &lt; roleModel.getRowCount(); i++) {&#xa;                roleModel.setValueAt(i + 1, i, 0); // C&#x1ed9;t STT (index 0)&#xa;            }&#xa;        }&#xa;    }&#xa;});"/>
                           </AuxValues>
                         </Component>
                       </SubComponents>
