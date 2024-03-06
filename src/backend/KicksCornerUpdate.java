@@ -82,6 +82,21 @@ public class KicksCornerUpdate {
             Logger.getLogger(KicksCornerUpdate.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     public static void updateInventory(int amount, int productID, int sizeID) {
+
+        try {
+            String sql = "Update ProductSize Set amount = ? Where productID = ? And sizeID = ?";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setInt(1, amount);
+            psmt.setInt(2, productID);
+            psmt.setInt(3, sizeID);
+           
+            psmt.executeUpdate();
+            System.out.println("Updated");
+        } catch (SQLException ex) {
+            Logger.getLogger(KicksCornerUpdate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public static void updateEmployee(Employee editedEmployee) {
 
         try {

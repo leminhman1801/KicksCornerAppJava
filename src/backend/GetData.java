@@ -90,7 +90,7 @@ public class GetData {
         employeeInfo[1] = username.getText();
         employeeInfo[2] = password.getText();
         employeeInfo[3] = phone.getText();
-        
+
         return employeeInfo;
     }
 
@@ -213,7 +213,7 @@ public class GetData {
                 rowData[2] = result.getObject("productName");
 
                 double price = result.getDouble("price");
-               String formattedPrice = String.format("%.2f", price);
+                String formattedPrice = String.format("%.2f", price);
                 rowData[3] = formattedPrice;
 
                 productModel.addRow(rowData);
@@ -295,6 +295,25 @@ public class GetData {
             Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return customerPoint;
+    }
+
+    public static int getAmountProduct(int productID, int sizeID) {
+        int amount = -1;
+
+        try {
+            String sql = "SELECT amount FROM ProductSize WHERE productID = ? AND sizeID = ?";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setInt(1, productID);
+            psmt.setInt(2, sizeID);
+            ResultSet result = psmt.executeQuery();
+
+            if (result.next()) {
+                amount = result.getInt("amount");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return amount;
     }
 
     public static Employee getUser(String username, String password) {

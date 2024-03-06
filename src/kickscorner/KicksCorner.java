@@ -282,7 +282,7 @@ public class KicksCorner extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
-        jLabel26 = new javax.swing.JLabel();
+        jLabelRevenueSummary = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -1398,11 +1398,11 @@ public class KicksCorner extends javax.swing.JFrame {
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
         jPanel18.setLayout(new java.awt.BorderLayout());
 
-        jLabel26.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("27");
-        jLabel26.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jPanel18.add(jLabel26, java.awt.BorderLayout.CENTER);
+        jLabelRevenueSummary.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        jLabelRevenueSummary.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelRevenueSummary.setText("27");
+        jLabelRevenueSummary.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jPanel18.add(jLabelRevenueSummary, java.awt.BorderLayout.CENTER);
 
         jPanel17.add(jPanel18, java.awt.BorderLayout.CENTER);
 
@@ -2890,10 +2890,14 @@ public class KicksCorner extends javax.swing.JFrame {
                 double price = (double) data[i][4];
                 double discount = (double) data[i][5];
                 double amount = (double) data[i][6];
-
+                int amountProductsInStock = GetData.getAmountProduct(productID, sizeID);
+                int currentProductsInStock = amountProductsInStock - quantity;
+                KicksCornerUpdate.updateInventory(currentProductsInStock, productID, sizeID);
                 OrderDetail orderDetail = new OrderDetail(orderID, productID, sizeID, price, quantity);
                 KicksCornerInsert.insertOrderDetail(orderDetail);
             }
+            inventoryModel.setRowCount(0);
+            GetData.getInventory(inventoryModel);
             PDFGenerator.printPanel(orderID, time, customerName, employeeName, phone, data, title, subTotal, pointUsed, total, cash, change);
             jTextFieldPhoneOrder.setText("");
             jTextFieldProductIDOrder.setText("");
@@ -3247,7 +3251,6 @@ public class KicksCorner extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -3273,6 +3276,7 @@ public class KicksCorner extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelEmployeeName;
     private javax.swing.JLabel jLabelNamePhone;
     private javax.swing.JLabel jLabelPointBlock;
+    private javax.swing.JLabel jLabelRevenueSummary;
     private javax.swing.JLabel jLabelSubTotal;
     private javax.swing.JLabel jLabelSubtotalBlock;
     private javax.swing.JLabel jLabelTotalBlock;
