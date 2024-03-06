@@ -204,7 +204,6 @@ public class GetData {
             String sql = "Select productID, productName, price From Product";
             PreparedStatement psmt = conn.prepareStatement(sql);
             ResultSet result = psmt.executeQuery();
-//            int columnCount = result.getMetaData().getColumnCount();
             int rowCount = 1;
             while (result.next()) {
                 Object[] rowData = new Object[4];
@@ -224,6 +223,18 @@ public class GetData {
         }
 
     }
+public static boolean isValidProductID(int productID) {
+    try {
+        String sql = "SELECT productID FROM Product WHERE productID = ?";
+        PreparedStatement psmt = conn.prepareStatement(sql);
+        psmt.setInt(1, productID);
+        ResultSet result = psmt.executeQuery();
+        return result.next();
+    } catch (SQLException ex) {
+        Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
+        return false; 
+    }
+}
 
     public static void getRole(DefaultTableModel roleModel) {
         try {

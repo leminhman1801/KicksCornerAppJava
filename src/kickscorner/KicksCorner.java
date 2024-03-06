@@ -98,6 +98,7 @@ public class KicksCorner extends javax.swing.JFrame {
     private static int editableRowProduct = -1;
     private static int editableRowOrder = -1;
     private static int editableRowRole = -1;
+    private static boolean isClickedEdit = false;
     private static int selectedRow = -1;
     private static int currentRole;
 
@@ -1402,6 +1403,11 @@ public class KicksCorner extends javax.swing.JFrame {
         jLabelRevenueSummary.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelRevenueSummary.setText("27");
         jLabelRevenueSummary.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jLabelRevenueSummary.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelRevenueSummaryMouseClicked(evt);
+            }
+        });
         jPanel18.add(jLabelRevenueSummary, java.awt.BorderLayout.CENTER);
 
         jPanel17.add(jPanel18, java.awt.BorderLayout.CENTER);
@@ -1733,6 +1739,12 @@ public class KicksCorner extends javax.swing.JFrame {
             };
 
             public void setValueAt(Object aValue, int row, int column) {
+                if (aValue == null || aValue.toString().isEmpty()) {
+                    // Nếu giá trị mới rỗng, không thực hiện cập nhật và thông báo lỗi
+                    JOptionPane.showMessageDialog(null, "Giá trị không được để trống.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 super.setValueAt(aValue, row, column);
             }
 
@@ -1743,7 +1755,14 @@ public class KicksCorner extends javax.swing.JFrame {
                 return super.getColumnClass(columnIndex);
             }
             public boolean isCellEditable(int row, int column) {
-                return row == editableRowInventory && column != 0;
+                if(isClickedEdit){
+                    System.out.println("Edit: " + isClickedEdit);
+                    return row == editableRowInventory && column == 5 || column ==  6;
+                }else{
+
+                    return row == editableRowInventory && column != 0;
+                }
+
             }
         };
         inventoryModel.addTableModelListener(new TableModelListener() {
@@ -2681,13 +2700,13 @@ public class KicksCorner extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButtonAddInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddInventoryActionPerformed
+          isClickedEdit = false;  
         inventoryModel.addRow(new Object[]{"", "", "", "", "", "", ""});
         selectedRow = jTableInventory.getRowCount() - 1;
         if (selectedRow != -1) {
             editableRowInventory = selectedRow;
         }
         ProductIDListener listener = new InventoryEditor();
-//        InventoryEditor.addInventory(jTableInventory, selectedRow, listener);
         CompletableFuture<Integer> future = InventoryEditor.addInventory(jTableInventory, selectedRow, listener);
         future.thenAccept(productID -> {
 
@@ -2701,6 +2720,7 @@ public class KicksCorner extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteInventoryActionPerformed
 
     private void jButtonEditInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditInventoryActionPerformed
+        isClickedEdit = true;
         selectedRow = jTableInventory.getSelectedRow();
         if (selectedRow != -1) {
             int modelRow = jTableInventory.convertRowIndexToModel(selectedRow);
@@ -3092,6 +3112,10 @@ public class KicksCorner extends javax.swing.JFrame {
     private void jTableRoleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTableRoleFocusLost
         
     }//GEN-LAST:event_jTableRoleFocusLost
+
+    private void jLabelRevenueSummaryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRevenueSummaryMouseClicked
+        
+    }//GEN-LAST:event_jLabelRevenueSummaryMouseClicked
 
     /**
      * @param args the command line arguments

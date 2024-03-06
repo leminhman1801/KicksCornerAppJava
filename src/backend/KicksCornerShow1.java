@@ -4,16 +4,14 @@
  */
 package backend;
 
-import static backend.GetData.conn;
-import classSQL.Order;
+
 import classSQL.OrderTable;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -144,25 +142,40 @@ public class KicksCornerShow1 {
         }
     }
 
-    public static void showProduct(DefaultTableModel inventoryModel, int selectedRow, int productID) {
+   public static void showProduct(DefaultTableModel inventoryModel, int selectedRow, int productID) {
+    boolean productFound = false;
+    while (!productFound) {
         try {
             String sql = "Select productName, price From Product Where productID = ?";
             PreparedStatement psmt = conn.prepareStatement(sql);
             psmt.setInt(1, productID);
             ResultSet result = psmt.executeQuery();
 
-            while (result.next()) {
+            if (result.next()) {
                 String productName = result.getString("productName");
-                BigDecimal price = result.getBigDecimal("price");
-                BigDecimal formattedPrice = price.setScale(2, RoundingMode.HALF_UP);
+                double price = result.getDouble("price");
+                String formattedPrice = String.format("%.2f", price);
                 inventoryModel.setValueAt(productName, selectedRow, 2);
                 inventoryModel.setValueAt(formattedPrice, selectedRow, 4);
+                productFound = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "No product found with the entered ID. Please try again.", "Message", JOptionPane.WARNING_MESSAGE);
+                // Prompt the user to enter a new product ID
+                String input = JOptionPane.showInputDialog("Enter product ID:");
+                // Convert the input to an integer
+                try {
+                    productID = Integer.parseInt(input);
+                } catch (NumberFormatException e) {
+                    // Handle invalid input (not an integer)
+                    JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid product ID.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(GetData.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
+}
+
 
     public static void showNewPrice(JTable table, DefaultTableModel inventoryModel, int selectedRow, int productID, int sizeID) {
 
